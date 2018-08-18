@@ -127,12 +127,7 @@
 #base "abilities/zuus_arc_lightning.txt"
 //#base "abilities/necronomicon_archer_.txt"
 
-#base "items/item_blink.txt"
-#base "items/item_cheese.txt"
-#base "items/item_black_king_bar.txt"
-#base "items/item_blade_mail.txt"
 #base "items/item_dagon.txt"
-#base "items/item_hood_of_defiance.txt"
 #base "items/item_rod_of_atos.txt"
 #base "items/item_orchid.txt"
 #base "items/item_nullifier.txt"
