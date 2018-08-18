@@ -1,0 +1,10 @@
+"DOTAAbilities"
+{
+  //=================================================================================================================
+  // Alchemist: Unstable Concoction Throw
+  //=================================================================================================================
+  "alchemist_unstable_concoction_throw"
+  {
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_BOTH"
+  }
+}

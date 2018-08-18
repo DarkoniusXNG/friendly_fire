@@ -1,0 +1,7 @@
+"DOTAAbilities"
+{
+	"chaos_knight_chaos_bolt"
+	{
+		"AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_BOTH"
+	}
+}
