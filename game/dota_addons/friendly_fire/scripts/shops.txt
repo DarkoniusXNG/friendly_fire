@@ -63,87 +63,84 @@
   // Misc (14/14)
   "misc"
   {
-    "item"    "item_magic_stick"
-	"item"	  "item_wind_lace"
-	"item"    "item_ring_of_regen"
-    "item"    "item_sobi_mask"
-    "item"    "item_boots"
-    //"item"    "item_whip"
-    //"item"    "item_telescope"
-    "item"    "item_gloves"
-    "item"    "item_cloak"
-	"item"    "item_ring_of_health"
-	"item"    "item_void_stone"
-	"item"    "item_gem"
-    "item"    "item_lifesteal"
-	"item"    "item_shadow_amulet"
-    "item"    "item_ghost"
-	"item"    "item_blink"
+    	"item"	"item_magic_stick"
+	"item"	"item_wind_lace"
+	"item"	"item_ring_of_regen"
+    	"item"	"item_sobi_mask"
+    	"item"	"item_boots"
+    	//"item"	"item_whip"
+    	//"item"	"item_telescope"
+    	"item"	"item_gloves"
+    	"item"	"item_cloak"
+	"item"	"item_ring_of_health"
+	"item"	"item_void_stone"
+	"item"	"item_gem"
+    	"item"	"item_lifesteal"
+	"item"	"item_shadow_amulet"
+    	"item"	"item_ghost"
+	"item"	"item_blink"
   } 
   
-  // Level 1 - Green Recipes (15/15)
+  // Level 1 - Green Recipes (14/15)
   "basics"
   {
-    "item"    "item_magic_wand"				// For all
-	"item"    "item_null_talisman"			// For INT
-	"item"    "item_wraith_band"			// For AGI
-	"item"    "item_bracer"					// For STR
-	"item"	  "item_atma"					// For STR and INT
-	"item"    "item_helm_of_the_dominator"
-	"item"    "item_soul_ring"
-    "item"    "item_phase_boots"
-    "item"    "item_power_treads"
-    "item"    "item_oblivion_staff"
-    "item"    "item_pers"
-    "item"    "item_hand_of_midas"
-    "item"    "item_travel_boots"   
-    "item"    "item_moon_shard"				// Moon Shard
-	"item"    "item_soul_booster"
+    	"item"	"item_magic_wand"
+	"item"	"item_null_talisman"
+	"item"	"item_wraith_band"
+	"item"	"item_bracer"
+	"item"	"item_helm_of_the_dominator"
+	"item"	"item_soul_ring"
+    	"item"	"item_phase_boots"
+    	"item"	"item_power_treads"
+    	"item"	"item_oblivion_staff"
+    	"item"	"item_pers"
+    	"item"	"item_hand_of_midas"
+    	"item"	"item_travel_boots"
+    	"item"	"item_moon_shard"
+	"item"	"item_soul_booster"
   }
 
-  // Level 2 - Blue Recipes (15/15)
+  // Level 2 - Blue Recipes (14/15)
   "support"
   {
-    "item"    "item_ring_of_basilius"
-	"item"    "item_headdress"
-    "item"    "item_buckler"
-    "item"    "item_urn_of_shadows"
-	"item"    "item_tranquil_boots"
-    //"item"    "item_natures_mend"
-	"item"    "item_ring_of_aquila"			// Ring of Aquila (upgrade for Ring of Basilius)
-	"item"	  "item_drum_of_vitality"		// Drum of Vitality (upgrade for Bracer and Ring of Regen)
-    "item"    "item_medallion_of_courage"
-	"item"    "item_arcane_boots"
-	//"item"    "item_nightfall_striders"
-	"item"    "item_ancient_janggo"			// Drums of Endurance
-	"item"    "item_vladmir"				// Vladmir (upgrade for Headdress and Ring of Basilius)
-    "item"    "item_mekansm"				// Mekansm (upgrade for Headdress and Buckler)
-	"item"	  "item_spirit_vessel"			// Spirit Vessel (upgrade for Urn of Shadows)
-	"item"    "item_pipe"					// Pipe of Insight (upgrade for Hood of Defiance and Headdress)
-	"item"    "item_guardian_greaves"		// Guardian Greaves (upgrade for Mekansm and Arcane boots)
+    	"item"	"item_ring_of_basilius"
+	"item"	"item_headdress"
+    	"item"	"item_buckler"
+    	"item"	"item_urn_of_shadows"
+	"item"	"item_tranquil_boots"
+    	//"item"	"item_natures_mend"
+	"item"	"item_ring_of_aquila"
+	"item"	"item_medallion_of_courage"
+	"item"	"item_arcane_boots"
+	//"item"	"item_nightfall_striders"
+	"item"	"item_ancient_janggo"
+	"item"	"item_vladmir"
+    	"item"	"item_mekansm"
+	"item"	"item_spirit_vessel"
+	"item"	"item_pipe"
+	"item"	"item_guardian_greaves"
   }
   
   // Arcane Recipes (15/15)
   "magics"      
   {
-    "item"    "item_glimmer_cape"
-	"item"    "item_veil_of_discord"
-	"item"    "item_aether_lens"
-	"item"    "item_force_staff"
-	"item"    "item_necronomicon"
-	"item"    "item_solar_crest"
-	"item"    "item_dagon"
-    "item"    "item_cyclone_ff"				// Custom Eul's Scepter of Divinity
-	"item"    "item_rod_of_atos"
-    //"item"    "item_rune_breaker"
-    //"item"	"item_aether_staff"
-    "item"    "item_orchid"
-	"item"    "item_ultimate_scepter"		// Aghanim Scepter
-	//"item"	  "item_nullifier"				// Nullifier
-    "item"    "item_refresher"
-    "item"    "item_sheepstick"				// Scythe of Vyse
-	"item"    "item_octarine_core"
-	"item"	  "item_master_staff"			// Master Staff (upgrade for Atma and Mystic Booster)
+    	"item"	"item_glimmer_cape"
+	"item"	"item_veil_of_discord"
+	"item"	"item_aether_lens"
+	"item"	"item_force_staff"
+	"item"	"item_necronomicon"
+	"item"	"item_solar_crest"
+	"item"	"item_dagon"
+    	"item"  "item_cyclone_ff"
+	"item"  "item_rod_of_atos"
+    	//"item"	"item_rune_breaker"
+    	//"item"	"item_aether_staff"
+    	"item"	"item_orchid"
+	"item"	"item_ultimate_scepter"
+	"item"	"item_nullifier"
+    	"item"	"item_refresher"
+    	"item"	"item_sheepstick"
+	"item"	"item_octarine_core"
    }
     
   // Level 3 - Purple Recipes (15/15)
