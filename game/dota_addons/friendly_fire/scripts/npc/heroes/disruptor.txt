@@ -1,0 +1,11 @@
+"DOTAHeroes"
+{
+	//=================================================================================================================
+	// HERO: Disruptor
+	//=================================================================================================================
+	"npc_dota_hero_disruptor"
+	{
+		"Ability2"		"disruptor_custom_glimpse"	// replaces disruptor_glimpse
+		"Ability6"		"disruptor_static_storm_ff"	// replaces disruptor_static_storm
+	}
+}
