@@ -1,0 +1,31 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Dagon
+	// Notes: OK; 20.2.2018;
+	//=================================================================================================================
+	"item_dagon"
+	{
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
+	}
+	
+	"item_dagon_2"
+	{
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
+	}
+	
+	"item_dagon_3"
+	{
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
+	}
+	
+	"item_dagon_4"
+	{
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
+	}
+	
+	"item_dagon_5"
+	{
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
+	}
+}
