@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Disruptor: Custom Glimpse
 	//=================================================================================================================
-	"disruptor_custom_glimpse"
+	"disruptor_glimpse_ff"
 	{
 		"BaseClass"                 "ability_datadriven"
 		"AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
