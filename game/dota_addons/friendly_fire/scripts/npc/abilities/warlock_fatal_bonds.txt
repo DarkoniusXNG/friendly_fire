@@ -1,0 +1,8 @@
+"DOTAAbilities"
+{
+	// Warlock: Fatal Bonds
+	"warlock_fatal_bonds"
+	{
+		"AbilityUnitTargetTeam"                             "DOTA_UNIT_TARGET_TEAM_BOTH"
+	}
+}

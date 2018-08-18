@@ -1,0 +1,8 @@
+"DOTAAbilities"
+{
+	// Winter Wyvern: Winter's Curse
+	"winter_wyvern_winters_curse"
+	{
+		"AbilityUnitTargetTeam"                             "DOTA_UNIT_TARGET_TEAM_BOTH"
+	}
+}

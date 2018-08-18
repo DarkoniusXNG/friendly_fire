@@ -1,0 +1,8 @@
+"DOTAAbilities"
+{
+	// Zeus: Arc Lightning
+	"zuus_arc_lightning"
+	{
+		"AbilityUnitTargetTeam"                             "DOTA_UNIT_TARGET_TEAM_BOTH"
+	}
+}

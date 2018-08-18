@@ -1,0 +1,8 @@
+"DOTAAbilities"
+{
+	// Winter Wyvern: Splinter Blast
+	"winter_wyvern_splinter_blast"
+	{
+		"AbilityUnitTargetTeam"                             "DOTA_UNIT_TARGET_TEAM_BOTH"
+	}
+}

@@ -1,0 +1,8 @@
+"DOTAAbilities"
+{
+	// Visage: Soul Assumption
+	"visage_soul_assumption"
+	{
+		"AbilityUnitTargetTeam"                             "DOTA_UNIT_TARGET_TEAM_BOTH"
+	}
+}

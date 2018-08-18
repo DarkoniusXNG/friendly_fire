@@ -1,0 +1,8 @@
+"DOTAAbilities"
+{
+	// Witch Doctor: Paralyzing Cask
+	"witch_doctor_paralyzing_cask"
+	{
+		"AbilityUnitTargetTeam"                             "DOTA_UNIT_TARGET_TEAM_BOTH"
+	}
+}
