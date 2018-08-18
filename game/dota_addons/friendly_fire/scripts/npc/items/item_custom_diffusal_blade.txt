@@ -4,7 +4,7 @@
 	// 1256 - Recipe: Custom Diffusal Blade
 	// Notes: OK; 21.7.2018;
 	//=================================================================================================================
-	"item_recipe_custom_diffusal_blade"
+	"item_recipe_diffusal_blade_ff"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
@@ -21,19 +21,19 @@
 		// Recipe
 		//-------------------------------------------------------------------------------------------------------------
 		"ItemRecipe"					"1"
-		"ItemResult"					"item_custom_diffusal_blade"
+		"ItemResult"					"item_diffusal_blade_ff"
 		"ItemRequirements"
 		{
-			"01"						"item_blade_of_alacrity;item_blade_of_alacrity;item_staff_of_wizardry"
+			"01"			"item_blade_of_alacrity;item_blade_of_alacrity;item_robe"
 		}
 	}
 	
 	//=================================================================================================================
-	// 1257 - Custom Diffusal Blade - 2x Blade of Alacrity (1000) + Staff of Wizardry (1000) + Recipe (500) = 3500
+	// 1257 - Custom Diffusal Blade
 	// Notes: OK; 17.5.2018;
 	// TO_DO:
 	//=================================================================================================================
-	"item_custom_diffusal_blade"
+	"item_diffusal_blade_ff"
 	{
 		"ID"							"1257"
 		"BaseClass"						"item_datadriven"
