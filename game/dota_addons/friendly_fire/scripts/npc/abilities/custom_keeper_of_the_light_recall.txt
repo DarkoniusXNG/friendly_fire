@@ -2,8 +2,9 @@
 {
 	//=================================================================================================================
 	// Keeper of the Light: Recall
+	// Notes: Name of the ability is intentionally the same as the original ability. We need to override it.
 	//=================================================================================================================
-	"keeper_of_the_light_recall_ff"
+	"keeper_of_the_light_recall"
 	{
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
 	}

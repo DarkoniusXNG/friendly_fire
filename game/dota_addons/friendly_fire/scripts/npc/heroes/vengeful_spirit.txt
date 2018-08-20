@@ -5,6 +5,7 @@
 	//=================================================================================================================
 	"npc_dota_hero_vengefulspirit"
 	{
-	
+		"Ability1"		"vengefulspirit_magic_missile_ff"	// replaces vengefulspirit_magic_missile
+		"Ability2"		"vengefulspirit_wave_of_terror_ff"	// replaces vengefulspirit_wave_of_terror
 	}
 }

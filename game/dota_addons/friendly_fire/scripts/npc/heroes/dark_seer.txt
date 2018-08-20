@@ -2,9 +2,12 @@
 {
 	//=================================================================================================================
 	// HERO: Dark Seer
+	// Notes: Vacuum and Wall of Replica work through filter. Ion Shell needs rework.
 	//=================================================================================================================
 	"npc_dota_hero_dark_seer"
 	{
-		"Ability2"		"dark_seer_ion_shell_ff"	// replaces dark_seer_ion_shell
+		"Ability1"		"dark_seer_vacuum_ff"			// replaces dark_seer_vacuum
+		"Ability2"		"dark_seer_ion_shell_ff"		// replaces dark_seer_ion_shell
+		"Ability6"		"dark_seer_wall_of_replica_ff"	// replaces dark_seer_wall_of_replica
 	}
 }

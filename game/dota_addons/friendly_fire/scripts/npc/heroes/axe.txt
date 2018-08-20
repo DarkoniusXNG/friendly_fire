@@ -2,9 +2,11 @@
 {
 	//=================================================================================================================
 	// HERO: Axe
+	// Notes: Berserker's Call works through filter. Counter Helix needs rework.
 	//=================================================================================================================
 	"npc_dota_hero_axe"
 	{
-		"Ability3"		"axe_counter_helix_ff"	// replaces axe_counter_helix
+		"Ability1"		"axe_berserkers_call_ff"	// replaces axe_berserkers_call
+		"Ability3"		"axe_counter_helix_ff"		// replaces axe_counter_helix
 	}
 }

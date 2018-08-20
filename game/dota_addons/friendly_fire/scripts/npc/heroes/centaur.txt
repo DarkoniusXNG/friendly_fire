@@ -2,9 +2,11 @@
 {
 	//=================================================================================================================
 	// HERO: Centaur Warrunner
+	// Notes: Hoof Stomp works through filter. Double Edge needs rework.
 	//=================================================================================================================
 	"npc_dota_hero_centaur"
 	{
+		"Ability1"		"centaur_hoof_stomp_ff"		// replaces centaur_hoof_stomp
 		"Ability2"		"centaur_double_edge_ff"	// replaces centaur_double_edge
 	}
 }

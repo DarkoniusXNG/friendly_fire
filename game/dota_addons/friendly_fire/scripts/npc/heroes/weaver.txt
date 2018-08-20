@@ -6,5 +6,6 @@
 	"npc_dota_hero_weaver"
 	{
 		"Ability1"		"weaver_the_swarm_ff"	// replaces weaver_the_swarm
+		"Ability2"		"weaver_shukuchi_ff"	// replaces weaver_shukuchi
 	}
 }

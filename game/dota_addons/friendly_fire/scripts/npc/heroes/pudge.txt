@@ -5,7 +5,7 @@
 	//=================================================================================================================
 	"npc_dota_hero_pudge"
 	{
-		"Ability2"		"pudge_rot_ff"		// replaces pudge_rot
+		"Ability2"		"pudge_rot_ff"			// replaces pudge_rot
 		"Ability3"		"pudge_flesh_heap_ff"	// replaces pudge_flesh_heap
 	}
 }

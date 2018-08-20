@@ -6,8 +6,8 @@
 	"npc_dota_hero_omniknight"
 	{
 		"Ability1"		"omniknight_purification_ff"	// replaces omniknight_purification
-		"Ability2"		"omniknight_repel_ff"		// replaces omniknight_repel
-		"Ability3"		"omniknight_degen_aura_ff"	// replaces omniknight_degen_aura
+		"Ability2"		"omniknight_repel_ff"			// replaces omniknight_repel
+		"Ability3"		"omniknight_degen_aura_ff"		// replaces omniknight_degen_aura
 		"Ability6"		"omniknight_guardian_angel_ff"	// replaces omniknight_guardian_angel
 	}
 }

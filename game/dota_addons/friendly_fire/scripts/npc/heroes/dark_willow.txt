@@ -2,9 +2,12 @@
 {
 	//=================================================================================================================
 	// HERO: Dark Willow
+	// Notes: All abilities below need rework. But try overriding first.
 	//=================================================================================================================
 	"npc_dota_hero_dark_willow"
 	{
 		"Ability1"		"dark_willow_bramble_maze_ff"	// replaces dark_willow_bramble_maze
+		"Ability4"		"dark_willow_bedlam_ff"			// replaces dark_willow_bedlam
+		"Ability6"		"dark_willow_terrorize_ff"		// replaces dark_willow_terrorize
 	}
 }
