@@ -1,10 +1,10 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Ability: Crystal Maidens Frostbite
+	// Crystal Maiden: Frostbite
 	//=================================================================================================================
 	"crystal_maiden_frostbite"
 	{
-		"AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
 	}
 }

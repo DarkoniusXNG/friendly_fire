@@ -3,8 +3,8 @@
 	//=================================================================================================================
 	// Magnataur: Empower
 	//=================================================================================================================
-	"magnataur_empower"
+	"magnataur_empower_ff"
 	{
-		"AbilityUnitTargetTeam"                             "DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
 	}
 }

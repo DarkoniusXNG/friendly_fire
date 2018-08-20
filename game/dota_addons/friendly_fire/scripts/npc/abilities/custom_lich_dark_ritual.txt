@@ -1,10 +1,10 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Huskar: Burning Spear
+	// Lich: Dark Ritual
 	//=================================================================================================================
-	"huskar_burning_spear"
+	"lich_sacrifice_ff"
 	{
-		"AbilityUnitTargetTeam"                             "DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_BOTH"
 	}
 }

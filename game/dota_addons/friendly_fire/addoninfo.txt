@@ -3,7 +3,7 @@
 	"TeamCount" 	      	"2"
 	"maps"	            	"dota"
 	"IsPlayable"	      	"1"
-	"PenaltiesEnabled"  	"1"
+	"PenaltiesEnabled"  	"0"
 	"CheckAFKPlayers" 		"1" 
 	"HeroGuidesSupported" 	"1"
 	

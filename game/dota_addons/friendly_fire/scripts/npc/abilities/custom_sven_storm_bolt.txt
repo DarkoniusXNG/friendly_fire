@@ -1,10 +1,10 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Centaur Warchief: Double Edge
+	// Sven: Storm Bolt
 	//=================================================================================================================
-	"centaur_double_edge"
+	"sven_storm_bolt_ff"
 	{
-		"AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
 	}
 }

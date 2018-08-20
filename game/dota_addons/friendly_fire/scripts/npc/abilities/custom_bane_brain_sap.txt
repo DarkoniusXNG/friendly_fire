@@ -1,10 +1,10 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Drow Ranger: Frost Arrows
+	// Bane: Brain Sap
 	//=================================================================================================================
-	"drow_ranger_frost_arrows"
+	"bane_brain_sap"
 	{
-		"AbilityUnitTargetTeam"                             "DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
 	}
 }

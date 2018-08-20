@@ -1,10 +1,10 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Doom Bringer: Infernal Blade
+	// Lion: Impale
 	//=================================================================================================================
-	"doom_bringer_infernal_blade"
+	"lion_impale_ff"
 	{
-		"AbilityUnitTargetTeam"                             "DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
 	}
 }

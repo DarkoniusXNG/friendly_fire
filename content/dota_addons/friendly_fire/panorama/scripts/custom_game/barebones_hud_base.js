@@ -117,4 +117,3 @@ function AddNotification(msg, panel) {
   GameEvents.Subscribe( "bottom_remove_notification", BottomRemoveNotification );
 })();
 
-

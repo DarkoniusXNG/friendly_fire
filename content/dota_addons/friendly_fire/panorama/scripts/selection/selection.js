@@ -105,12 +105,13 @@ function OnUpdateQueryUnit()
 
 (function () {
     // Custom event listeners
-    GameEvents.Subscribe( "selection_new", Selection_New);
-    GameEvents.Subscribe( "selection_add", Selection_Add);
-    GameEvents.Subscribe( "selection_remove", Selection_Remove);
-    GameEvents.Subscribe( "selection_reset", Selection_Reset);
+    GameEvents.Subscribe("selection_new", Selection_New);
+    GameEvents.Subscribe("selection_add", Selection_Add);
+    GameEvents.Subscribe("selection_remove", Selection_Remove);
+    GameEvents.Subscribe("selection_reset", Selection_Reset);
 
     // Built-In Dota client events
-    GameEvents.Subscribe( "dota_player_update_selected_unit", OnUpdateSelectedUnit );
-    GameEvents.Subscribe( "dota_player_update_query_unit", OnUpdateQueryUnit );
+    GameEvents.Subscribe("dota_player_update_selected_unit", OnUpdateSelectedUnit);
+    GameEvents.Subscribe("dota_player_update_query_unit", OnUpdateQueryUnit);
 })();
+

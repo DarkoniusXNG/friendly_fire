@@ -1,10 +1,10 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Disruptor: Glimpse
+	// Keeper of the Light: Recall
 	//=================================================================================================================
-	"disruptor_glimpse"
+	"keeper_of_the_light_recall_ff"
 	{
-		"AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_BOTH"
-	}  
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
+	}
 }

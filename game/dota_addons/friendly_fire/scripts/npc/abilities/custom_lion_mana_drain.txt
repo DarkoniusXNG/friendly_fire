@@ -3,8 +3,8 @@
 	//=================================================================================================================
 	// Lion: Mana Drain
 	//=================================================================================================================
-	"lion_mana_drain"
+	"lion_mana_drain_ff"
 	{
-		"AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
 	}
 }

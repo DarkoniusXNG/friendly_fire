@@ -1,8 +1,0 @@
-"DOTAAbilities"
-{
-	// Viper: Poison Attack
-	"viper_poison_attack"
-	{
-		"AbilityUnitTargetTeam"                             "DOTA_UNIT_TARGET_TEAM_BOTH"
-	}
-}

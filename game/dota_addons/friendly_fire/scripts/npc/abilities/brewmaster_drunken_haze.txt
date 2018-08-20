@@ -5,6 +5,6 @@
 	//=================================================================================================================
 	"brewmaster_drunken_haze"
 	{
-		"AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
 	}
 }

@@ -322,3 +322,4 @@ function ActivateAttachmentConfiguration(msg)
   $.RegisterEventHandler( 'DragEnd', $('#CosmeticsHeader'), OnDragEnd );
   
 })();
+

@@ -173,7 +173,6 @@
   width: 100%;
   min-height: 100px;
   padding:5px;
-  
   flow-children: down;
 }
 
@@ -204,7 +203,6 @@
 {
   background-color: #333333;
   width: 100%;
-  
   flow-children: down;
 }
 

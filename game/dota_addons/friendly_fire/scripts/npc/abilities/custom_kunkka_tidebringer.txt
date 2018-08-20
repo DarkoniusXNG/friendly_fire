@@ -1,10 +1,10 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Chaos Knight: Phantasm
+	// Kunkka: Tidebringer
 	//=================================================================================================================
-	"chaos_knight_phantasm"
+	"kunkka_tidebringer_ff"
 	{
-		"AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
 	}
 }

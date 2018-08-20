@@ -5,6 +5,6 @@
 	//=================================================================================================================
 	"bristleback_viscous_nasal_goo"
 	{
-		"AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
 	}
 }

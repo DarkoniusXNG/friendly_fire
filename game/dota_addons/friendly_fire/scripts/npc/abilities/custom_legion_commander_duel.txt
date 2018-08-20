@@ -3,8 +3,8 @@
 	//=================================================================================================================
 	// Legion Commander: Duel
 	//=================================================================================================================
-	"legion_commander_duel"
+	"legion_commander_duel_ff"
 	{
-		"AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
 	}
 }

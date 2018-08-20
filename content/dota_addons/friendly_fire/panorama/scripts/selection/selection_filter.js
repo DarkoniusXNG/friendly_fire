@@ -5,7 +5,7 @@ var SELECT_ONLY_BUILDINGS = true; // Get only the buildings when units&buildings
 var DISPLAY_RANGE_PARTICLE = true; // Uses the main selected entity to update a particle showing attack range
 var rangedParticle
 
-function SelectionFilter( entityList ) {
+function SelectionFilter(entityList) {
     
     if (DESELECT_BUILDINGS) {
         if (entityList.length > 1 && IsMixedBuildingSelectionGroup(entityList) ){
@@ -97,7 +97,7 @@ function IsMixedBuildingSelectionGroup ( entityList ) {
 
 function SelectOnlyBuildings() {
     var iPlayerID = Players.GetLocalPlayer();
-    var selectedEntities = Players.GetSelectedEntities( iPlayerID );
+    var selectedEntities = Players.GetSelectedEntities(iPlayerID);
     
     skip = true;
     var first = FirstBuildingEntityFromSelection(selectedEntities)
@@ -111,7 +111,7 @@ function SelectOnlyBuildings() {
     }
 }
 
-function FirstBuildingEntityFromSelection( entityList ){
+function FirstBuildingEntityFromSelection(entityList){
     for (var i = 0; i < entityList.length; i++) {
         if (IsCustomBuilding(entityList[i])){
             return entityList[i]
@@ -120,8 +120,9 @@ function FirstBuildingEntityFromSelection( entityList ){
     return 0
 }
 
-function IsCustomBuilding( entityIndex ){
+function IsCustomBuilding(entityIndex){
     var ability_building = Entities.GetAbilityByName( entityIndex, "ability_building")
     var ability_tower = Entities.GetAbilityByName( entityIndex, "ability_tower")
     return (ability_building != -1 || ability_tower != -1)
 }
+

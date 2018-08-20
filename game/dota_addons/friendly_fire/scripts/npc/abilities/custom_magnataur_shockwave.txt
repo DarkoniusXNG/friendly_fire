@@ -1,10 +1,10 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Kunkka: Tidebringer
+	// Magnataur: Shockwave
 	//=================================================================================================================
-	"kunkka_tidebringer"
+	"magnataur_shockwave_ff"
 	{
-		"AbilityUnitTargetTeam"                             "DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
 	}
 }
