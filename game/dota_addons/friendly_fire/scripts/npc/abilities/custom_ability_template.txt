@@ -1,10 +1,17 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Rubick: Telekinesis
+	// Hero Name: Ability Name - custom, differences
+	// Author: 
+	// Notes: OK; ..2018;
+	// TO_DO:
 	//=================================================================================================================
-	"rubick_telekinesis"
+	"original_ability_name_ff"
 	{
+		"BaseClass"						"ability_datadriven" // or ability_lua
+		"ScriptFile"                	"heroes/hero_name/ability_name.lua"
+		"AbilityTextureName"			"original_ability_name"
+		
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
 	}
 }

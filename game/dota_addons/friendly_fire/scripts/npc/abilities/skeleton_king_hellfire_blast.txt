@@ -1,8 +1,10 @@
 "DOTAAbilities"
 {
-	// Skeleton King: Hellfire Blast
+	//=================================================================================================================
+	// Wraith King: Hellfire Blast
+	//=================================================================================================================
 	"skeleton_king_hellfire_blast"
 	{
-		"AbilityUnitTargetTeam"                             "DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
 	}
 }

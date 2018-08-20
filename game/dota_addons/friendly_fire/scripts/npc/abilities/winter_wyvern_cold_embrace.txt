@@ -1,8 +1,10 @@
 "DOTAAbilities"
 {
+	//=================================================================================================================
 	// Winter Wyvern: Cold Embrace
+	//=================================================================================================================
 	"winter_wyvern_cold_embrace"
 	{
-		"AbilityUnitTargetTeam"                             "DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
 	}
 }

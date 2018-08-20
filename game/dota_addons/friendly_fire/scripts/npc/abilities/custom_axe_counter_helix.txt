@@ -1,0 +1,47 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Axe: Counter Helix - custom
+	// Author: 
+	// Notes: OK; 20.8.2018;
+	// TO_DO: Everything
+	//=================================================================================================================
+	"axe_counter_helix_ff"
+	{
+		"ID"							"85009"
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"axe_counter_helix"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilitySound"					"Hero_Axe.CounterHelix"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_3"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"0.45 0.4 0.35 0.3"
+		
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"damage"					"75 110 145 180"
+			}
+			
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"radius"					"275"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"trigger_chance"			"20"
+			}
+		}
+	}
+}

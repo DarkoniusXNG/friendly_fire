@@ -1,8 +1,10 @@
 "DOTAAbilities"
 {
+	//=================================================================================================================
 	// Windranger: Shackleshot
+	//=================================================================================================================
 	"windrunner_shackleshot"
 	{
-		"AbilityUnitTargetTeam"                             "DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
 	}
 }

@@ -1,8 +1,10 @@
 "DOTAAbilities"
 {
+	//=================================================================================================================
 	// Visage: Grave Chill
+	//=================================================================================================================
 	"visage_grave_chill"
 	{
-		"AbilityUnitTargetTeam"                             "DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
 	}
 }
