@@ -8,6 +8,7 @@
 	//=================================================================================================================
 	"original_ability_name_ff"
 	{
+		"ID"							"80000 + original ID"
 		"BaseClass"						"ability_datadriven" // or ability_lua
 		"ScriptFile"                	"heroes/hero_name/ability_name.lua"
 		"AbilityTextureName"			"original_ability_name"

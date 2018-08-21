@@ -127,14 +127,13 @@ function friendly_fire_gamemode:OnPlayerLearnedAbility(keys)
 	
 	local player = EntIndexToHScript(keys.player)
 	local ability_name = keys.abilityname
+	local playerID = player:GetPlayerID()
+	local hero = PlayerResource:GetAssignedHero(playerID)
 	
-	if ability_name == "custom_special_bonus_unique_hero_name" then
-		local playerID = player:GetPlayerID()
-		local hero = PlayerResource:GetAssignedHero(playerID)
-		
+	if ability_name == "special_bonus_unique_sven" then
 		local talent = hero:FindAbilityByName(ability_name)
 		if talent then
-			hero:AddNewModifier(hero, nil, "modifier_custom_hero_name_talent", {})
+			hero:AddNewModifier(hero, nil, "modifier_storm_bolt_cd_reduction_talent", {})
 		end
 	end
 end

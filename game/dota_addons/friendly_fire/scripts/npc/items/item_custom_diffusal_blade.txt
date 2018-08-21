@@ -1,7 +1,7 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// 1256 - Recipe: Custom Diffusal Blade
+	// Recipe: Custom Diffusal Blade
 	// Notes: OK; 21.8.2018;
 	//=================================================================================================================
 	"item_recipe_diffusal_blade_ff"
@@ -29,7 +29,7 @@
 	}
 	
 	//=================================================================================================================
-	// 1257 - Diffusal Blade - custom, when cast on allies or self it slows and purges of negative buffs.
+	// Diffusal Blade - custom, when cast on allies or self it slows and purges of negative buffs.
 	// Notes: OK; 21.8.2018;
 	//=================================================================================================================
 	"item_diffusal_blade_ff"

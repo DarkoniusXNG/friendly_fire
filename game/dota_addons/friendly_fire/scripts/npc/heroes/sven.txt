@@ -6,6 +6,6 @@
 	"npc_dota_hero_sven"
 	{
 		"Ability1"		"sven_storm_bolt_ff"		// replaces sven_storm_bolt
-		"Ability2"		"sven_great_cleave_ff"		// replaces sven_great_cleave
+		//"Ability2"		"sven_great_cleave_ff"		// replaces sven_great_cleave
 	}
 }
