@@ -229,8 +229,7 @@ function friendly_fire_gamemode:OnPlayerPickHero(keys)
 	Timers:CreateTimer(0.5, function()
 		local playerID = hero_entity:GetPlayerID() -- or player:GetPlayerID()
 		if PlayerResource:IsFakeClient(playerID) then
-			-- This is happening only for bots when they spawn for the first time or if they use custom hero-create spells:
-			-- Custom Illusion spells
+			-- This is happening only for bots when they spawn for the first time or if they use custom hero-create spells (Custom Illusion spells)
 		else
 			if PlayerResource.PlayerData[playerID].already_assigned_hero == true then
 				-- This is happening only when players create new heroes with spells (Custom Illusion spells)
@@ -312,7 +311,6 @@ function friendly_fire_gamemode:OnEntityKilled(keys)
 		
 		-- When team hero kill limit is reached
 		if END_GAME_ON_KILLS and GetTeamHeroKills(killer_unit:GetTeam()) >= KILLS_TO_END_GAME_FOR_TEAM then
-			GameRules:SetSafeToLeave(true)
 			GameRules:SetGameWinner(killer_unit:GetTeam())
 		end
 		

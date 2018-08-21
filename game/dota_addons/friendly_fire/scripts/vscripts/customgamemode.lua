@@ -333,7 +333,7 @@ function friendly_fire_gamemode:OrderFilter(event)
 	
 	if order == DOTA_UNIT_ORDER_HOLD_POSITION or order == DOTA_UNIT_ORDER_STOP then
 		local caster = EntIndexToHScript(units["0"])
-		if caster.original_team ~= nil then
+		if caster.original_team then
 			if caster.original_team == DOTA_TEAM_GOODGUYS then
 				caster:SetTeam(DOTA_TEAM_GOODGUYS)
 			else
@@ -533,21 +533,14 @@ function friendly_fire_gamemode:OrderFilter(event)
 				"item_invis_sword",
 				"item_silver_edge",
 				"item_satanic",
-				--"item_mask_of_madness",
+				"item_mask_of_madness",
 				"item_soul_ring",
 				"item_arcane_boots",
 				"item_ancient_janggo",
 				"item_smoke_of_deceit",
 				"item_tome_of_knowledge",
 				"item_guardian_greaves",
-				"item_ring_of_aquila",
-				"item_staff_of_negation",
-				"item_ultimate_king_bar",
-				"item_infused_robe",
-				"item_orb_of_reflection",
-				"item_blink_sword",
-				"item_drum_of_vitality",
-				"item_custom_mask_of_madness"
+				"item_ring_of_aquila"
 			}
 		local dont_change_team = false
 		for i = 1, #exceptions_abilities do
@@ -608,7 +601,7 @@ function friendly_fire_gamemode:DamageFilter(keys)
 	end
 	
 	local damage_type = keys.damagetype_const
-	local inflictor = keys.entindex_inflictor_const	-- keys.entindex_inflictor_const is nil if damage is not caused by ability
+	local inflictor = keys.entindex_inflictor_const	-- keys.entindex_inflictor_const is nil if damage is not caused by an ability
 	local damage_after_reductions = keys.damage 	-- keys.damage is damage after reductions
 	
 	local damaging_ability
@@ -628,199 +621,6 @@ function friendly_fire_gamemode:DamageFilter(keys)
 	end
 	
 	-- Lack of entities handling (illusions error fix)
-	if attacker:IsNull() or victim:IsNull() then
-		return false
-	end
-	
-	-- Orb of Reflection: Damage prevention and Reflecting all damage before reductions as Pure damage to the attacker
-	if victim:HasModifier("item_modifier_orb_of_reflection_active_reflect") and keys.damage > 0 then
-
-		-- Nullifying the damage to victim
-		keys.damage = 0
-		
-		-- Reflect or not
-		if not dont_reflect_flag then	
-			local ability
-			for i = 0,8 do
-				local this_item = victim:GetItemInSlot(i)
-				if this_item then
-					if this_item:GetName() == "item_orb_of_reflection" then
-						ability = this_item
-					end
-				end
-			end
-			
-			-- Initializing the value of original damage
-			local original_damage
-			
-			if damage_type == DAMAGE_TYPE_PHYSICAL then
-				-- Armor of the victim
-				local armor = victim:GetPhysicalArmorValue()
-				-- Physical damage is reduced by armor
-				local damage_armor_reduction = 1-((armor*0.05) / (1+0.05*(math.abs(armor))))
-				-- Physical damage equation: damage_after_reductions = original_damage * damage_armor_reduction
-				if damaging_ability then
-					-- Damage came from an ability (spell or item)
-					original_damage = damage_after_reductions / damage_armor_reduction
-				else
-					-- Damage came from a physical attack (Damage block is not calculated)
-					local average_attack_damage = attacker:GetAverageTrueAttackDamage(attacker)
-					local damage_before_armor_reduction = damage_after_reductions / damage_armor_reduction
-					original_damage = math.max(damage_before_armor_reduction, average_attack_damage)
-				end
-			elseif damage_type == DAMAGE_TYPE_MAGICAL then
-				-- Magic Resistance of the victim
-				local magic_resistance = victim:GetMagicalArmorValue()
-				-- Magical damage is reduced by magic resistance
-				local damage_magic_resist_reduction = 1-magic_resistance
-				-- Magical damage equation: damage_after_reductions = original_damage * damage_magic_resist_reduction
-				original_damage = damage_after_reductions / damage_magic_resist_reduction
-			elseif damage_type == DAMAGE_TYPE_PURE then
-				original_damage = damage_after_reductions
-			end
-			
-			if ability and ability ~= damaging_ability and attacker ~= victim and (attacker:IsTower() == false) and (IsFountain(attacker) == false) then
-				-- Reflect damage to the attacker
-				local damage_table = {}
-				damage_table.victim = attacker
-				damage_table.attacker = victim
-				damage_table.damage_type = DAMAGE_TYPE_PURE
-				damage_table.ability = ability
-				damage_table.damage = original_damage
-				damage_table.damage_flags = DOTA_DAMAGE_FLAG_REFLECTION
-		
-				ApplyDamage(damage_table)
-			end
-		end
-	end
-	
-	if attacker:IsNull() or victim:IsNull() then
-		return false
-	end
-	
-	-- Orb of Reflection: Partial Damage return to the attacker as Magical damage (DOESN'T WORK ON ILLUSIONS!)
-	if victim:HasModifier("item_modifier_orb_of_reflection_passive_return") and not (victim:HasModifier("item_modifier_orb_of_reflection_active_reflect")) and victim:IsRealHero() and keys.damage > 0 then
-
-		-- Return or not
-		if not dont_reflect_flag then	
-			local ability
-			for i = 0,8 do
-				local this_item = victim:GetItemInSlot(i)
-				if this_item then
-					if this_item:GetName() == "item_orb_of_reflection" then
-						ability = this_item
-					end
-				end
-			end
-			
-			-- Fetch the damage return amount/percentage
-			local ability_level = ability:GetLevel() - 1
-			local damage_return = ability:GetLevelSpecialValueFor("passive_damage_return", ability_level)
-			
-			-- Calculating damage that will be returned to attacker
-			local new_damage = damage_after_reductions*damage_return/100
-			
-			if attacker:IsNull() or victim:IsNull() then
-				return false
-			end
-			
-			if ability and ability ~= damaging_ability and attacker ~= victim and (attacker:IsTower() == false) and (IsFountain(attacker) == false) then
-				-- Returning Damage to the attacker
-				local damage_table = {}
-				damage_table.victim = attacker
-				damage_table.attacker = victim
-				damage_table.damage_type = DAMAGE_TYPE_MAGICAL
-				damage_table.ability = ability
-				damage_table.damage = new_damage
-				damage_table.damage_flags = DOTA_DAMAGE_FLAG_REFLECTION
-				
-				ApplyDamage(damage_table)
-			end
-		end
-	end
-	
-	if attacker:IsNull() or victim:IsNull() then
-		return false
-	end
-	
-	-- Infused Robe Damage Blocking any damage type after all reductions (DOESN'T WORK ON ILLUSIONS!)
-	if victim:HasModifier("item_modifier_infused_robe_damage_block") and not (victim:HasModifier("item_modifier_infused_robe_damage_barrier")) and victim:IsRealHero() and keys.damage > 0 then
-		
-		local ability
-		for i = 0,8 do
-			local this_item = victim:GetItemInSlot(i)
-			if this_item then
-				if this_item:GetName() == "item_infused_robe" then
-					ability = this_item
-				end
-			end
-		end
-		-- Fetch the damage block amount
-		local ability_level = ability:GetLevel() - 1
-		local damage_block = ability:GetLevelSpecialValueFor("damage_block", ability_level)
-		
-		-- Calculating new/reduced damage and blocked damage
-		local new_damage = math.max(keys.damage - damage_block, 0)
-		local blocked_damage = keys.damage - new_damage -- max(blocked_damage) = damage_block
-		
-		if attacker:IsNull() or victim:IsNull() then
-			return false
-		end
-		
-		if (attacker:IsTower() == false) and (IsFountain(attacker) == false) then
-			-- Show block message
-			if damage_type == DAMAGE_TYPE_PHYSICAL then
-				SendOverheadEventMessage(nil, OVERHEAD_ALERT_BLOCK, victim, blocked_damage, nil)
-			else
-				SendOverheadEventMessage(nil, OVERHEAD_ALERT_MAGICAL_BLOCK, victim, blocked_damage, nil)
-			end
-
-			-- Reduce damage
-			keys.damage = new_damage
-		end
-	end
-	
-	if attacker:IsNull() or victim:IsNull() then
-		return false
-	end
-	
-	-- Infused Robe Divine Barrier (Anti-Damage Shield/Shell)
-	if victim:HasModifier("item_modifier_infused_robe_damage_barrier") and keys.damage > 0 then
-		
-		local ability
-		for i = 0,8 do
-			local this_item = victim:GetItemInSlot(i)
-			if this_item then
-				if this_item:GetName() == "item_infused_robe" then
-					ability = this_item
-				end
-			end
-		end
-		-- Fetch the barrier block amount
-		local ability_level = ability:GetLevel() - 1
-		local barrier_absorb_damage = ability:GetLevelSpecialValueFor("barrier_block", ability_level)
-		
-		local absorbed_now = 0
-		local absorbed_already
-		if victim.anti_damage_shell_absorbed then
-			absorbed_already = victim.anti_damage_shell_absorbed
-		else
-			absorbed_already = 0
-		end
-
-		if keys.damage + absorbed_already < barrier_absorb_damage then
-			absorbed_now = keys.damage
-			victim.anti_damage_shell_absorbed = absorbed_already + keys.damage
-		else
-			-- Absorb up to the limit and end
-			absorbed_now = barrier_absorb_damage - absorbed_already
-			victim:RemoveModifierByName("item_modifier_infused_robe_damage_barrier")
-			victim.anti_damage_shell_absorbed = nil
-		end
-		-- Absorb damage with Anti-Damage shield/shell
-		keys.damage = keys.damage - absorbed_now
-	end
-	
 	if attacker:IsNull() or victim:IsNull() then
 		return false
 	end
