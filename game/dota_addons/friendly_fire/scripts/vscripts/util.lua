@@ -167,7 +167,7 @@ end
     and creates a copy of the target for the caster, returns the hScript copy;
 	Target hero has vision over the area where he is moved! You need a modifier to disable this vision;
 	Copy/Clone of the target hero is not invulnerable! You need a modifier for that too;
-	Used in many abilities ...
+	Used in some abilities ...
 ]]
 function HideAndCopyHero(target, caster)
 	if target and caster then
@@ -297,7 +297,7 @@ end
 
 --[[ This function interrupts, hides the hero and disables all his passives and auras; If he is not alive it revives him first;
 	This function is meant to be used on heroes that will not be unhidden afterwards.
-	Used in many abilities ...
+	Used in some abilities ...
 ]]
 function HideTheCopyPermanently(copy)
 	if copy then
@@ -347,7 +347,7 @@ function HideTheCopyPermanently(copy)
 		-- Moving the copy to the corner of the map (Hiding him for sure)
 		local corner = Vector(0,0,0)
 		if GetMapName() == "smaller_map" then
-			corner = Vector(2300,-2300,-322)
+			corner = corner_of_that_smaller_map
 		else
 			corner = Vector(7500,-7200,-322)
 		end
@@ -359,7 +359,7 @@ end
 
 --[[ This function reveals the original hero (that was hidden) at certain location;
 	This function re-enables abilities and auras (some, not all! it's intentional!) that were disabled in HideAndCopyHero function
-	Used in many abilities ...
+	Used in some abilities ...
 ]]
 function UnhideOriginalOnLocation(original, location)
 	if original then
@@ -396,20 +396,20 @@ function UnhideOriginalOnLocation(original, location)
 	end
 end
 
---[[ This function disables passive modifiers from custom (datadriven) abilities for the duration
+--[[ This function disables passive modifiers from custom (datadriven) abilities for the duration.
 	Attention: This only works with abilities that have 1 passive modifier and if the order of strings in tables is not random.
 	If Duration is 100, passives are disabled forever / until death or removal of the hero.
-	Used in DamageFilter, HideAndCopyHero, HideTheCopyPermanently, UnhideOriginalOnLocation ...
+	Used in HideAndCopyHero, HideTheCopyPermanently, UnhideOriginalOnLocation ...
 ]]
 function CustomPassiveBreak(unit, duration)
 	-- List of custom abilities with passive modifiers
 	local abilities_with_passives = {
-	"axe_custom_counter_helix",
-	"ability_nothing"
+	"ability1",
+	"ability2"
 	}
 	local passive_modifiers = {
-	"modifier_counter_helix_aura_ultimate",
-	"modifier_nothing"
+	"modifier1",
+	"modifier2"
 	}
 	if unit and duration then
 		for i=1, #passive_modifiers do
@@ -435,7 +435,6 @@ function CustomPassiveBreak(unit, duration)
 end
 
 --[[ This function disables inventory and removes item passives.
-	Used in Master Staff ...
 ]]
 function CustomItemDisable(caster, unit)
 	local passive_item_modifiers_exceptions ={
@@ -497,7 +496,6 @@ function CustomItemDisable(caster, unit)
 end
 
 --[[ This function enables inventory and item passives if they were disabled with CustomItemDisable
-	Used in Master Staff ...
 ]]
 function CustomItemEnable(caster, unit)
 	if unit then
@@ -531,8 +529,8 @@ end
 	Can remove most debuffs that are not removable with strong dispel;
 	Used in many abilities, HideAndCopyHero, HideTheCopyPermanently, ...
 ]]
-function SuperStrongDispel(htarget, bCustomRemoveAllDebuffs, bCustomRemoveAllBuffs)
-	if htarget then
+function SuperStrongDispel(target, bCustomRemoveAllDebuffs, bCustomRemoveAllBuffs)
+	if target then
 		local BuffsCreatedThisFrameOnly = false
 		local RemoveExceptions = false
 		local RemoveStuns = false
@@ -540,30 +538,37 @@ function SuperStrongDispel(htarget, bCustomRemoveAllDebuffs, bCustomRemoveAllBuf
 		if bCustomRemoveAllDebuffs == true then
 			
 			RemoveStuns = true -- this ensures removing modifiers debuffs with "IsStunDebuff" "1"
-			
-			htarget:RemoveModifierByName("modifier_venomancer_poison_sting")		-- pierces BKB, doesn't get removed with BKB
-			htarget:RemoveModifierByName("modifier_bane_nightmare_invulnerable") 	-- invulnerable type
-			
-			htarget:RemoveModifierByName("modifier_item_skadi_slow")				-- pierces BKB, doesn't get removed with BKB
-			htarget:RemoveModifierByName("modifier_heavens_halberd_debuff")			-- doesn't pierce BKB, doesn't get removed with BKB
+			-- Ability debuffs:
+			target:RemoveModifierByName("modifier_venomancer_poison_sting")			-- pierces BKB, doesn't get removed with BKB
+			target:RemoveModifierByName("modifier_bane_nightmare_invulnerable") 	-- invulnerable type
+			-- Item debuffs:
+			target:RemoveModifierByName("modifier_item_skadi_slow")					-- pierces BKB, doesn't get removed with BKB
+			target:RemoveModifierByName("modifier_heavens_halberd_debuff")			-- doesn't pierce BKB, doesn't get removed with BKB
+			target:RemoveModifierByName("modifier_sheepstick_debuff")				-- doesn't pierce BKB, doesn't get removed with BKB
+			target:RemoveModifierByName("modifier_silver_edge_debuff")				-- doesn't pierce BKB, doesn't get removed with BKB
 		end
 		
 		if bCustomRemoveAllBuffs == true then
 			-- List of undispellable buffs that are safe to remove without making errors, crashes etc.
 			local undispellable_with_normal_dispel_buffs = {
 				"modifier_alchemist_chemical_rage",
-				"modifier_custom_blade_storm",
-				"modifier_custom_rage_buff",
+				"modifier_custom_blade_fury_buff",
+				"modifier_item_aeon_disk_buff",
+				"modifier_item_blade_mail_reflect",
+				"modifier_item_phase_boots_active",
+				"modifier_item_hood_of_defiance_barrier",
+				"modifier_item_pipe_barrier",
+				"modifier_item_crimson_guard_extra",
 				"modifier_black_king_bar_immune"
 				-- Death Pact
 			}
 			
 			for i=1, #undispellable_with_normal_dispel_buffs do
-				htarget:RemoveModifierByName(undispellable_with_normal_dispel_buffs[i])	
+				target:RemoveModifierByName(undispellable_with_normal_dispel_buffs[i])	
 			end
 		end
 		
-		htarget:Purge(bCustomRemoveAllBuffs, bCustomRemoveAllDebuffs, BuffsCreatedThisFrameOnly, RemoveStuns, RemoveExceptions)
+		target:Purge(bCustomRemoveAllBuffs, bCustomRemoveAllDebuffs, BuffsCreatedThisFrameOnly, RemoveStuns, RemoveExceptions)
 	else
 		print("Target for Super Strong Dispel is nil.")
 	end
@@ -588,7 +593,7 @@ function glimpse_position_tracker()
 	end
 end
 
--- Finding units in a trapezoid
+-- Finding units in a trapezoid shape area
 function FindUnitsinTrapezoid(team_number, direction, start_position, cache_unit, start_radius, end_radius, distance, target_team, target_type, target_flags, order, cache)
 	local circle = FindUnitsInRadius(team_number, start_position, cache_unit, distance+end_radius, target_team, target_type, target_flags, order, cache)
 	local direction = direction
@@ -608,20 +613,6 @@ function FindUnitsinTrapezoid(team_number, direction, start_position, cache_unit
 	local vector2 = vertex4 - vertex2	-- vector24
 	local vector3 = vertex3 - vertex4	-- vector43
 	local vector4 = vertex1 - vertex3	-- vector31
-	
-	-- For debugging - it shows vertexes briefly
-	--local ward1 = CreateUnitByName("npc_dota_observer_wards", vertex1, true, attacker, attacker, team_number)
-	--FindClearSpaceForUnit(ward1, vertex1, false)
-	--ward1:AddNewModifier(attacker, nil, "modifier_kill", {duration = 2.0})
-	--local ward2 = CreateUnitByName("npc_dota_observer_wards", vertex2, true, attacker, attacker, team_number)
-	--FindClearSpaceForUnit(ward2, vertex2, false)
-	--ward2:AddNewModifier(attacker, nil, "modifier_kill", {duration = 2.0})
-	--local ward3 = CreateUnitByName("npc_dota_observer_wards", vertex3, true, attacker, attacker, team_number)
-	--FindClearSpaceForUnit(ward3, vertex3, false)
-	--ward3:AddNewModifier(attacker, nil, "modifier_kill", {duration = 2.0})
-	--local ward4 = CreateUnitByName("npc_dota_observer_wards", vertex4, true, attacker, attacker, team_number)
-	--FindClearSpaceForUnit(ward4, vertex4, false)
-	--ward4:AddNewModifier(attacker, nil, "modifier_kill", {duration = 2.0})
 	
 	local unit_table = {}
 	
@@ -645,7 +636,9 @@ function FindUnitsinTrapezoid(team_number, direction, start_position, cache_unit
 end
 
 -- Custom Cleave function
-function CustomCleaveAttack(attacker, target, ability, main_damage, damage_percent, start_position, start_radius, end_radius, distance, particle)
+-- Required arguments: main_damage, damage_percent, cleave_origin, start_radius, end_radius, distance;
+-- If start_radius is 0, it will behave like the old cleave(pre 7.00);
+function CustomCleaveAttack(attacker, target, ability, main_damage, damage_percent, cleave_origin, start_radius, end_radius, distance, particle_cleave, particle_hit)
 	if attacker == nil then
 		print("Attacker/Cleaver is nil!")
 		return nil
@@ -671,7 +664,7 @@ function CustomCleaveAttack(attacker, target, ability, main_damage, damage_perce
 		damage_table.ability = ability
 	else
 		target_team = DOTA_UNIT_TARGET_TEAM_BOTH
-		target_type = DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO
+		target_type = bit.bor(DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_HERO)
 		target_flags = DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES
 		damage_table.damage_type = DAMAGE_TYPE_PHYSICAL
 	end
@@ -691,11 +684,16 @@ function CustomCleaveAttack(attacker, target, ability, main_damage, damage_perce
 		return
 	end
 	
-	local affected_units = FindUnitsinTrapezoid(team_number, direction, start_position, cache_unit, start_radius, end_radius, distance, target_team, target_type, target_flags, order, cache)
+	if target:IsOther() then
+		--print("Cleave doesn't work when attacking ward-type units!")
+		return
+	end
+	
+	local affected_units = FindUnitsinTrapezoid(team_number, direction, cleave_origin, cache_unit, start_radius, end_radius, distance, target_team, target_type, target_flags, order, cache)
 	
 	-- Calculating damage and setting damage flags
 	damage_table.damage = main_damage*damage_percent/100
-	damage_table.damage_flags = DOTA_DAMAGE_FLAG_IGNORES_PHYSICAL_ARMOR + DOTA_DAMAGE_FLAG_NO_SPELL_AMPLIFICATION + DOTA_DAMAGE_FLAG_NO_SPELL_LIFESTEAL
+	damage_table.damage_flags = bit.bor(DOTA_DAMAGE_FLAG_IGNORES_PHYSICAL_ARMOR, DOTA_DAMAGE_FLAG_NO_SPELL_AMPLIFICATION, DOTA_DAMAGE_FLAG_NO_SPELL_LIFESTEAL)
 	
 	for k, unit in pairs(affected_units) do
 		if unit ~= target then
@@ -704,9 +702,19 @@ function CustomCleaveAttack(attacker, target, ability, main_damage, damage_perce
 		end
 	end
 	
-	-- Particles
-	--local cleave_pfx = ParticleManager:CreateParticle(particle, PATTACH_ABSORIGIN, target)
-	--ParticleManager:SetParticleControl(cleave_pfx, 0, target:GetAbsOrigin())
-	--ParticleManager:ReleaseParticleIndex(cleave_pfx)
-
+	-- Main particle
+	if particle_cleave then
+		local cleave_pfx = ParticleManager:CreateParticle(particle_cleave, PATTACH_ABSORIGIN_FOLLOW, attacker)
+		ParticleManager:SetParticleControl(cleave_pfx, 0, target:GetAbsOrigin())
+		ParticleManager:ReleaseParticleIndex(cleave_pfx)
+	end
+	
+	-- Hit particles
+	if particle_hit then
+		for _,unit in pairs(affected_units) do
+			local cleave_hit_pfx = ParticleManager:CreateParticle(particle_hit, PATTACH_ABSORIGIN, unit)
+			ParticleManager:SetParticleControl(cleave_hit_pfx, 0, unit:GetAbsOrigin())
+			ParticleManager:ReleaseParticleIndex(cleave_hit_pfx)
+		end
+	end
 end
