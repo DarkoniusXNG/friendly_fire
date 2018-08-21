@@ -27,4 +27,3 @@ function modifier_animation_freeze:CheckState()
 
   return state
 end
-

@@ -115,12 +115,7 @@ function friendly_fire_gamemode:OnHeroInGame(hero)
 				
 				-- Set the starting gold for the player's hero
 				if PlayerResource:HasRandomed(playerID) then
-					PlayerResource:ModifyGold(playerID, 200, false, 0)
-				end
-				
-				-- Client Settings
-				if PlayerResource:IsValidPlayerID(playerID) then
-					--hero:AddNewModifier(hero, nil, "modifier_client_convars", {})
+					PlayerResource:ModifyGold(playerID, RANDOM_START_GOLD-NORMAL_START_GOLD, false, 0)
 				end
 				
 				-- This ensures that this will not happen again if some other hero spawns for the first time during the game
@@ -156,9 +151,7 @@ function friendly_fire_gamemode:InitGameMode()
 	GameRules:SetUseCustomHeroXPValues(USE_CUSTOM_XP_VALUES)
 	GameRules:SetGoldPerTick(GOLD_PER_TICK)
 	GameRules:SetGoldTickTime(GOLD_TICK_TIME)
-	GameRules:SetRuneSpawnTime(RUNE_SPAWN_TIME)
-	--:SetPowerRuneSpawnInterval(RUNE_SPAWN_TIME)
-	--:SetBountyRuneSpawnInterval(BOUNTY_RUNE_TIME)
+	--GameRules:SetRuneSpawnTime(RUNE_SPAWN_TIME)
 	GameRules:SetUseBaseGoldBountyOnHeroes(USE_STANDARD_HERO_GOLD_BOUNTY)
 	GameRules:SetHeroMinimapIconScale(MINIMAP_ICON_SIZE)
 	GameRules:SetCreepMinimapIconScale(MINIMAP_CREEP_ICON_SIZE)
@@ -256,9 +249,6 @@ function friendly_fire_gamemode:InitGameMode()
   
 	-- Lua Modifiers
 	LinkLuaModifier("modifier_always_deniable", "libraries/modifiers/modifier_always_deniable", LUA_MODIFIER_MOTION_NONE)
-	--LinkLuaModifier("modifier_client_convars", "libraries/modifiers/modifier_client_convars", LUA_MODIFIER_MOTION_NONE)
-	LinkLuaModifier("modifier_custom_building_invulnerable", "libraries/modifiers/modifier_custom_building_invulnerable", LUA_MODIFIER_MOTION_NONE)
-	LinkLuaModifier("modifier_custom_omniknight_talent", "heroes/omniknight/modifiers/modifier_custom_omniknight_talent", LUA_MODIFIER_MOTION_NONE)
 	
 	-- Initialize stuff for Disruptor Glimpse
 	GameRules.Heroes = {}
@@ -307,12 +297,13 @@ function friendly_fire_gamemode:CaptureGameMode()
 		mode:SetMinimumAttackSpeed(MINIMUM_ATTACK_SPEED)
 		mode:SetStashPurchasingDisabled(DISABLE_STASH_PURCHASING)
 
-		for rune, spawn in pairs(ENABLED_RUNES) do
-			mode:SetRuneEnabled(rune, spawn)
-		end
+		--for rune, spawn in pairs(ENABLED_RUNES) do
+			--mode:SetRuneEnabled(rune, spawn)
+		--end
 		
-		mode:SetPowerRuneSpawnInterval(RUNE_SPAWN_TIME)
-		mode:SetBountyRuneSpawnInterval(BOUNTY_RUNE_TIME)
+		--mode:SetPowerRuneSpawnInterval(RUNE_SPAWN_TIME)
+		--mode:SetBountyRuneSpawnInterval(BOUNTY_RUNE_TIME)
+		mode:SetUseDefaultDOTARuneSpawnLogic(true)
 
 		mode:SetUnseenFogOfWarEnabled(USE_UNSEEN_FOG_OF_WAR)
 		
@@ -333,7 +324,7 @@ function friendly_fire_gamemode:OrderFilter(event)
 	
 	if order == DOTA_UNIT_ORDER_HOLD_POSITION or order == DOTA_UNIT_ORDER_STOP then
 		local caster = EntIndexToHScript(units["0"])
-		if caster.original_team then
+		if caster.original_team ~= nil then
 			if caster.original_team == DOTA_TEAM_GOODGUYS then
 				caster:SetTeam(DOTA_TEAM_GOODGUYS)
 			else
@@ -609,15 +600,6 @@ function friendly_fire_gamemode:DamageFilter(keys)
 		damaging_ability = EntIndexToHScript(inflictor)
 	else
 		damaging_ability = nil
-	end
-	
-	-- Dont reflect the reflected damage
-	local dont_reflect_flag = nil
-	if damaging_ability then
-		local damaging_ability_name = damaging_ability:GetName()
-		if damaging_ability_name == "item_blade_mail" or damaging_ability_name =="item_orb_of_reflection" then
-			dont_reflect_flag = true
-		end
 	end
 	
 	-- Lack of entities handling (illusions error fix)

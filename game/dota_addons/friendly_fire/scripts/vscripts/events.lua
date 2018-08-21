@@ -128,13 +128,13 @@ function friendly_fire_gamemode:OnPlayerLearnedAbility(keys)
 	local player = EntIndexToHScript(keys.player)
 	local ability_name = keys.abilityname
 	
-	if ability_name == "special_bonus_unique_sven" then
+	if ability_name == "custom_special_bonus_unique_hero_name" then
 		local playerID = player:GetPlayerID()
 		local hero = PlayerResource:GetAssignedHero(playerID)
 		
 		local talent = hero:FindAbilityByName(ability_name)
 		if talent then
-			hero:AddNewModifier(hero, nil, "modifier_custom_paladin_talent", {})
+			hero:AddNewModifier(hero, nil, "modifier_custom_hero_name_talent", {})
 		end
 	end
 end
@@ -178,7 +178,7 @@ function friendly_fire_gamemode:OnPlayerLevelUp(keys)
 			-- end
 		-- end
 	else
-		-- When hero.original isn't nil, hero is a clone and he gets a level, remove skill points
+		-- When hero.original isn't nil, hero is a custom clone and he gets a level, remove skill points
 		hero:SetAbilityPoints(0)
 	end
 end
@@ -187,9 +187,9 @@ end
 function friendly_fire_gamemode:OnLastHit(keys)
 	--PrintTable(keys)
 	
-	local isFirstBlood = keys.FirstBlood == 1
-	local isHeroKill = keys.HeroKill == 1
-	local isTowerKill = keys.TowerKill == 1
+	local IsFirstBlood = keys.FirstBlood == 1
+	local IsHeroKill = keys.HeroKill == 1
+	local IsTowerKill = keys.TowerKill == 1
 	local player = PlayerResource:GetPlayer(keys.PlayerID)
 	local killedEnt = EntIndexToHScript(keys.EntKilled)
 end

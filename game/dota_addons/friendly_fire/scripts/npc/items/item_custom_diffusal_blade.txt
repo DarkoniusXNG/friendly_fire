@@ -2,20 +2,20 @@
 {
 	//=================================================================================================================
 	// 1256 - Recipe: Custom Diffusal Blade
-	// Notes: OK; 21.7.2018;
+	// Notes: OK; 21.8.2018;
 	//=================================================================================================================
 	"item_recipe_diffusal_blade_ff"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"ID"							"1256"
+		"ID"							"3608"
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName"			"custom/custom_recipe"
 		"Model"							"models/props_gameplay/recipe.vmdl"
 		
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"						"500"	
+		"ItemCost"						"700"	
 		"ItemShopTags"					""
 		
 		// Recipe
@@ -29,19 +29,18 @@
 	}
 	
 	//=================================================================================================================
-	// 1257 - Custom Diffusal Blade
-	// Notes: OK; 17.5.2018;
+	// 1257 - Diffusal Blade - custom, when cast on allies or self it slows and purges of negative buffs.
+	// Notes: OK; 21.8.2018;
 	//=================================================================================================================
 	"item_diffusal_blade_ff"
 	{
-		"ID"							"1257"
+		"ID"							"3609"
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName"			"custom/custom_diffusal_blade" // diffusal_blade_2
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES | DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
 		
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
@@ -53,16 +52,15 @@
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityManaCost"				"0"
-		"ItemCost"						"3500"
+		"ItemCost"						"3150"
 		"ItemShopTags"					"agi;int;unique;hard_to_tag"
 		"ItemQuality"					"artifact"
 		"ItemAliases"					"diffusal blade"
 		"ItemDisassembleRule"			"DOTA_ITEM_DISASSEMBLE_NEVER"
 		
 		"ItemPermanent"					"1"
-		"ItemInitialCharges"			"16"
-		"ItemRequiresCharges"			"1"
-		"ItemDisplayCharges"			"1"
+		"ItemRequiresCharges"			"0"
+		"ItemDisplayCharges"			"0"
 		
 		// Special	
 		//-------------------------------------------------------------------------------------------------------------
@@ -81,12 +79,12 @@
 			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"mana_burn"				"45"
+				"mana_burn"				"50"
 			}
 			"04"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"mana_burn_illusion_melee"	"15"
+				"mana_burn_illusion_melee"	"16"
 			}
 			"05"
 			{
@@ -95,13 +93,8 @@
 			}
 			"06"
 			{
-				"var_type"				"FIELD_INTEGER"
-				"purge_summoned_damage"	"99999"
-			}
-			"07"
-			{
 				"var_type"				"FIELD_FLOAT"
-				"purge_slow_duration"	"3.0"
+				"purge_slow_duration"	"4.0"
 			}
 		}
 		
@@ -116,7 +109,7 @@
 					"Teams"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 					"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 				}
-				"Duration"		"0.25"
+				"Duration"		"%purge_slow_duration"
 			}
 			
 			"RunScript"
@@ -124,9 +117,6 @@
 				"ScriptFile"	"items/custom_diffusal_blade.lua"
 				"Function"		"Diffusal_Purge_Start"
 			}
-			
-			"SpendCharge"
-			{}
 		}
 		
 		"Modifiers"
@@ -190,7 +180,7 @@
 				"IsBuff"			"1"
 				"IsPurgable"		"0"
 				
-				"Duration"			"0.25"
+				"Duration"			"%purge_slow_duration"
 				
 				"OnCreated"
 				{
@@ -200,6 +190,11 @@
 						"Function"		"DispelAlly"
 						"TARGET"		"TARGET"
 					}
+				}
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" 		"-100" 
 				}
 			}
 			

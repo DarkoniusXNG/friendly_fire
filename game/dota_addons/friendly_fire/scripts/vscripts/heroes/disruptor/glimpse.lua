@@ -16,7 +16,7 @@ function Glimpse(keys)
 		end
 	end
 	
-	-- if target is an illusion, kill instantly and do nothing else.
+	-- if target is an illusion, damage it with 99999 damage and do nothing else.
 	if target:IsIllusion() then
 		local damage_table = {}
 		damage_table.attacker = caster
@@ -43,9 +43,9 @@ function Glimpse(keys)
 	direction = direction:Normalized()
     
     local projectile_speed = 600
-	local duration = math.max(0.05, math.min(1.8, distance / projectile_speed))
-	local actual_speed = direction*(distance / duration)
-			
+	local duration = math.max(0.05, math.min(1.8, distance/projectile_speed))
+	local actual_speed = direction*(distance/duration)
+
 	local projectile =
 	{
 		Ability = ability,

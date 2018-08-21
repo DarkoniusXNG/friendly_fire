@@ -3,7 +3,7 @@ ENABLE_HERO_RESPAWN = true              -- Should the heroes automatically respa
 UNIVERSAL_SHOP_MODE = false             -- Should the main shop contain Secret Shop items as well as regular items
 ALLOW_SAME_HERO_SELECTION = false       -- Should we let people select the same hero as each other
 
-CUSTOM_GAME_SETUP_TIME = 30.0			-- How long should custom game setup last?
+CUSTOM_GAME_SETUP_TIME = 25.0			-- How long should custom game setup last?
 HERO_SELECTION_TIME = 30.0              -- How long should we let people select their hero?
 STRATEGY_TIME = 20.0					-- How long should strategy time last?
 SHOWCASE_TIME = 0.0						-- How long should show case time be?
@@ -15,7 +15,6 @@ GOLD_PER_TICK = 2                     	-- How much gold should players get per t
 GOLD_TICK_TIME = 1.0                    -- How long should we wait in seconds between gold ticks?
 NORMAL_START_GOLD = 600					-- Starting Gold if picked normally
 RANDOM_START_GOLD = 800					-- Starting Gold if randomed
-REPICK_START_GOLD = 825					-- Starting Gold if repicked (REPICK IS NOT WORKING!)
 
 RECOMMENDED_BUILDS_DISABLED = false     -- Should we disable the recommended builds for heroes
 CAMERA_DISTANCE_OVERRIDE = 1134.0       -- How far out should we allow the camera to go?  1134 is the default in Dota
@@ -24,8 +23,8 @@ MINIMAP_ICON_SIZE = 1                   -- What icon size should we use for our 
 MINIMAP_CREEP_ICON_SIZE = 1             -- What icon size should we use for creeps?
 MINIMAP_RUNE_ICON_SIZE = 1              -- What icon size should we use for runes?
 
-RUNE_SPAWN_TIME = 120                   -- How long in seconds should we wait between rune spawns?
-BOUNTY_RUNE_TIME = 300
+--RUNE_SPAWN_TIME = 120                   -- How long in seconds should we wait between rune spawns?
+--BOUNTY_RUNE_TIME = 300
 CUSTOM_BUYBACK_COST_ENABLED = false     -- Should we use a custom buyback cost setting?
 CUSTOM_BUYBACK_COOLDOWN_ENABLED = false -- Should we use a custom buyback time?
 BUYBACK_ENABLED = true                 	-- Should we allow people to buyback when they die?
@@ -104,18 +103,18 @@ DISABLE_DAY_NIGHT_CYCLE = false         -- Should we disable the day night cycle
 DISABLE_KILLING_SPREE_ANNOUNCER = false -- Shuold we disable the killing spree announcer?
 DISABLE_STICKY_ITEM = false             -- Should we disable the sticky item button in the quick buy area?
 
-ENABLED_RUNES = {}                      -- Which runes should be enabled to spawn in our game mode?
-ENABLED_RUNES[DOTA_RUNE_DOUBLEDAMAGE] = true
-ENABLED_RUNES[DOTA_RUNE_HASTE] = true
-ENABLED_RUNES[DOTA_RUNE_ILLUSION] = true
-ENABLED_RUNES[DOTA_RUNE_INVISIBILITY] = true
-ENABLED_RUNES[DOTA_RUNE_REGENERATION] = true
-ENABLED_RUNES[DOTA_RUNE_BOUNTY] = true
-ENABLED_RUNES[DOTA_RUNE_ARCANE] = true
+--ENABLED_RUNES = {}                      -- Which runes should be enabled to spawn in our game mode?
+--ENABLED_RUNES[DOTA_RUNE_DOUBLEDAMAGE] = true
+--ENABLED_RUNES[DOTA_RUNE_HASTE] = true
+--ENABLED_RUNES[DOTA_RUNE_ILLUSION] = true
+--ENABLED_RUNES[DOTA_RUNE_INVISIBILITY] = true
+--ENABLED_RUNES[DOTA_RUNE_REGENERATION] = true
+--ENABLED_RUNES[DOTA_RUNE_BOUNTY] = true
+--ENABLED_RUNES[DOTA_RUNE_ARCANE] = true
 
-MAX_NUMBER_OF_TEAMS = 2                			-- How many potential teams can be in this game mode?
-USE_CUSTOM_TEAM_COLORS = false          		-- Should we use custom team colors?
-USE_CUSTOM_TEAM_COLORS_FOR_PLAYERS = true      -- Should we use custom team colors to color the players/minimap?
+MAX_NUMBER_OF_TEAMS = 2                		-- How many potential teams can be in this game mode?
+USE_CUSTOM_TEAM_COLORS = false          	-- Should we use custom team colors?
+USE_CUSTOM_TEAM_COLORS_FOR_PLAYERS = true	-- Should we use custom team colors to color the players/minimap?
 
 TEAM_COLORS = {}                        -- If USE_CUSTOM_TEAM_COLORS is set, use these colors.
 TEAM_COLORS[DOTA_TEAM_GOODGUYS] = { 0, 255, 0 }  	--    Teal  61, 210, 150
@@ -135,3 +134,9 @@ CUSTOM_TEAM_PLAYER_COUNT = {}	-- If we're not automatically setting the number o
 
 CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_GOODGUYS] = 5
 CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_BADGUYS]  = 5
+
+if IsInToolsMode() then
+	NORMAL_START_GOLD = 90000
+	GOLD_PER_TICK = 0
+	PRE_GAME_TIME = 45.0
+end
