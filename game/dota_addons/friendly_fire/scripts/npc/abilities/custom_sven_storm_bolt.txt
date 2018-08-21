@@ -4,7 +4,7 @@
 	// Sven: Storm Bolt - custom, affects allies too but not the caster
 	// Author: Darkonius
 	// Notes: OK; 21.8.2018;
-	// TO_DO: Test
+	// TO_DO:
 	//=================================================================================================================
 	"sven_storm_bolt_ff"
 	{

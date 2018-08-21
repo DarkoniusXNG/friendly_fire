@@ -24,6 +24,7 @@ function sven_storm_bolt_ff:GetCooldown(nLevel)
 		end
 	else
 		if caster:HasModifier("modifier_storm_bolt_cd_reduction_talent") then
+			-- I will fix this at another time
 			cooldown = cooldown - 6.0
 		end
 	end
