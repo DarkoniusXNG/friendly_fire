@@ -675,8 +675,8 @@ function CustomCleaveAttack(attacker, target, ability, main_damage, damage_perce
 	end
 	
 	if target:GetTeamNumber() == team_number then
-		--print("Cleave doesn't work when attacking allies!")
-		--return		-- Uncomment this if you don't want to cleave on allies
+		--print("Cleave works when attacking allies!")
+		-- Add return if you don't want cleave to work when attacking allies
 	end
 	
 	if target:IsTower() or target:IsBarracks() or target:IsBuilding() then
@@ -717,4 +717,15 @@ function CustomCleaveAttack(attacker, target, ability, main_damage, damage_perce
 			ParticleManager:ReleaseParticleIndex(cleave_hit_pfx)
 		end
 	end
+	-- local particle
+	-- particle = ParticleManager:CreateParticle(particle_name, PATTACH_ABSORIGIN_FOLLOW, target)
+	-- ParticleManager:SetParticleControl(particle, 1, Vector(radius/2,radius/2,radius/2))
+	-- particle = ParticleManager:CreateParticle(particle_name, PATTACH_ABSORIGIN_FOLLOW, target)
+	-- ParticleManager:SetParticleControl(particle, 1, Vector(radius/2,radius/2,radius/2))
+	-- particle = ParticleManager:CreateParticle(particle_name, PATTACH_ABSORIGIN_FOLLOW, target)
+	-- ParticleManager:SetParticleControl(particle, 1, Vector(radius/2,radius/2,radius/2))
+	-- particle = ParticleManager:CreateParticle(particle_name, PATTACH_ABSORIGIN_FOLLOW, target)
+	-- ParticleManager:SetParticleControl(particle, 1, Vector(radius/2,radius/2,radius/2))
+	-- particle = ParticleManager:CreateParticle(particle_name, PATTACH_ABSORIGIN_FOLLOW, target)
+	-- ParticleManager:SetParticleControl(particle, 1, Vector(radius/2,radius/2,radius/2))
 end

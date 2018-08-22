@@ -23,8 +23,6 @@ MINIMAP_ICON_SIZE = 1                   -- What icon size should we use for our 
 MINIMAP_CREEP_ICON_SIZE = 1             -- What icon size should we use for creeps?
 MINIMAP_RUNE_ICON_SIZE = 1              -- What icon size should we use for runes?
 
---RUNE_SPAWN_TIME = 120                   -- How long in seconds should we wait between rune spawns?
---BOUNTY_RUNE_TIME = 300
 CUSTOM_BUYBACK_COST_ENABLED = false     -- Should we use a custom buyback cost setting?
 CUSTOM_BUYBACK_COOLDOWN_ENABLED = false -- Should we use a custom buyback time?
 BUYBACK_ENABLED = true                 	-- Should we allow people to buyback when they die?
@@ -136,7 +134,7 @@ CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_GOODGUYS] = 5
 CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_BADGUYS]  = 5
 
 if IsInToolsMode() then
-	NORMAL_START_GOLD = 90000
+	NORMAL_START_GOLD = 9000
 	GOLD_PER_TICK = 0
 	PRE_GAME_TIME = 45.0
 end
