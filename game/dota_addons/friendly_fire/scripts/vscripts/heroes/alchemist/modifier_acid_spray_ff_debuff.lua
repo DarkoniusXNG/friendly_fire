@@ -27,7 +27,7 @@ function modifier_acid_spray_ff_debuff:OnCreated(kv)
 		damage_table.attacker = ability:GetCaster()
 		damage_table.damage = self.damage
 		damage_table.damage_type = ability:GetAbilityDamageType()
-		damage.damage_flags = DOTA_DAMAGE_FLAG_BYPASSES_BLOCK
+		damage_table.damage_flags = DOTA_DAMAGE_FLAG_BYPASSES_BLOCK
 		ApplyDamage(damage_table)
 		self:StartIntervalThink(self.tick_rate)
 	end
@@ -57,7 +57,7 @@ function modifier_acid_spray_ff_debuff:OnIntervalThink()
 		damage_table.attacker = ability:GetCaster()
 		damage_table.damage = self.damage
 		damage_table.damage_type = ability:GetAbilityDamageType()
-		damage.damage_flags = DOTA_DAMAGE_FLAG_BYPASSES_BLOCK
+		damage_table.damage_flags = DOTA_DAMAGE_FLAG_BYPASSES_BLOCK
 		ApplyDamage(damage_table)
 	end
 end
