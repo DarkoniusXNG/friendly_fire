@@ -3,8 +3,8 @@
 	//=================================================================================================================
 	// Alchemist: Acid Spray - custom
 	// Author: 
-	// Notes: OK; 20.8.2018;
-	// TO_DO: Lua file
+	// Notes: OK; 23.8.2018;
+	// TO_DO: tooltips
 	//=================================================================================================================
 	"alchemist_acid_spray_ff"
 	{
@@ -13,7 +13,10 @@
 		"ScriptFile"                "heroes/alchemist/acid_spray.lua"
 		"AbilityTextureName"		"alchemist_acid_spray"
 		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitDamageType"     "DAMAGE_TYPE_PHYSICAL"
+		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
 		"SpellImmunityType"         "SPELL_IMMUNITY_ENEMIES_YES"
 		
 		// Casting
@@ -52,8 +55,7 @@
 			"04"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"armor_reduction"		"4 5 6 7"
-				"LinkedSpecialBonus"	"special_bonus_unique_alchemist_5"
+				"armor_reduction"		"-4 -5 -6 -7"
 			}
 			"05"
 			{

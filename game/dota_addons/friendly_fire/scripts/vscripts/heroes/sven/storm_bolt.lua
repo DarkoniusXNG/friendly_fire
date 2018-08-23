@@ -2,8 +2,8 @@ if sven_storm_bolt_ff == nil then
 	sven_storm_bolt_ff = class({})
 end
 
-LinkLuaModifier("modifier_sven_storm_bolt_ff", "heroes/sven/modifiers/modifier_sven_storm_bolt_ff.lua", LUA_MODIFIER_MOTION_NONE)
-LinkLuaModifier("modifier_storm_bolt_cd_reduction_talent", "heroes/sven/modifiers/modifier_storm_bolt_cd_reduction_talent.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_sven_storm_bolt_ff", "heroes/sven/modifier_sven_storm_bolt_ff.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_storm_bolt_cd_reduction_talent", "heroes/sven/modifier_storm_bolt_cd_reduction_talent.lua", LUA_MODIFIER_MOTION_NONE)
 
 function sven_storm_bolt_ff:GetAOERadius()
 	return self:GetSpecialValueFor("bolt_aoe")
@@ -99,5 +99,9 @@ function sven_storm_bolt_ff:OnProjectileHit(hTarget, vLocation)
 			end
 		end
 	end
+	return true
+end
+
+function sven_storm_bolt_ff:ProcsMagicStick()
 	return true
 end

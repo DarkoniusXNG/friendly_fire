@@ -1,3 +1,4 @@
+#base "heroes/alchemist.txt"
 #base "heroes/disruptor.txt"
 #base "heroes/sven.txt"
 

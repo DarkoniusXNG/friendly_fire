@@ -1,3 +1,4 @@
+#base  "npc_dota_custom_dummy_unit.txt"
 
 "DOTAUnits"
 {
