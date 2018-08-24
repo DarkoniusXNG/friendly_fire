@@ -3,3 +3,11 @@ Dota 2 where every ability has an interaction with allies and enemies. If the ab
 
 1) Abilities that already have some interaction with both teams like Pudge Meat Hook and Abaddon Myst Coil are not changed in any way.
 2) Abilities with attack modifiers are not changed in any way, they mostly don't work on allies (haven't tested all).
+
+Hero progress:
+
+* Abaddon - 99% - needs explanations in tooltips
+* Alchemist - 100%
+* Anti-Mage - 99% - needs explanations in tooltips
+* Disruptor - 75% - needs reimplemented Static Storm
+* Sven - 99% - needs cleave particle fix
