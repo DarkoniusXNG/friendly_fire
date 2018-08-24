@@ -1,10 +1,10 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Alchemist: Acid Spray - custom, works on allies and self, the damage of multiple instances of Acid Spray doesn't stack.
+	// Alchemist: Acid Spray - custom, works on allies and self, multiple instances of Acid Spray don't stack.
 	// Author: 
-	// Notes: OK; 23.8.2018;
-	// TO_DO: tooltips
+	// Notes: OK; 24.8.2018;
+	// TO_DO:
 	//=================================================================================================================
 	"alchemist_acid_spray_ff"
 	{

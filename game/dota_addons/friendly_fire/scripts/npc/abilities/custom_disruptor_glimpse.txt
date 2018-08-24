@@ -1,11 +1,14 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Disruptor: Custom Glimpse
+	// Disruptor: Glimpse - custom, works on allies and self
+	// Notes: OK; 24.8.2018;
 	//=================================================================================================================
 	"disruptor_glimpse_ff"
 	{
+		"ID"						"85459"
 		"BaseClass"                 "ability_datadriven"
+		"AbilityTextureName"        "disruptor_glimpse"
 		"AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_BOTH"
 		"AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO"
@@ -13,18 +16,16 @@
 		"SpellImmunityType"         "SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
 		"FightRecapLevel"           "1"
-		"AbilityTextureName"        "disruptor_glimpse"
-
+		
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
-
 		"AbilityCastPoint"        	"0.05"
+		"AbilityCastRange"        	"600 1000 1400 1800"
 
 		"AbilityCooldown"       	"60.0 46.0 32.0 18.0"
 
 		"AbilityManaCost"       	"100"
-    
-		"AbilityCastRange"        	"600 1000 1400 1800"
-
+		"AbilityProcsMagicStick"	"1"
+		
 		// Precache
 		//-------------------------------------------------------------------------------------------------------------
 		"precache"

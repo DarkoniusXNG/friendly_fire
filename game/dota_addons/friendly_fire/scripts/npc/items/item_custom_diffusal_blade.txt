@@ -2,7 +2,7 @@
 {
 	//=================================================================================================================
 	// Recipe: Custom Diffusal Blade
-	// Notes: OK; 21.8.2018;
+	// Notes: OK; 24.8.2018;
 	//=================================================================================================================
 	"item_recipe_diffusal_blade_ff"
 	{
@@ -30,13 +30,13 @@
 	
 	//=================================================================================================================
 	// Diffusal Blade - custom, when cast on allies or self it slows and purges of negative buffs.
-	// Notes: OK; 21.8.2018;
+	// Notes: OK; 24.8.2018;
 	//=================================================================================================================
 	"item_diffusal_blade_ff"
 	{
 		"ID"							"3609"
 		"BaseClass"						"item_datadriven"
-		"AbilityTextureName"			"custom/custom_diffusal_blade" // diffusal_blade_2
+		"AbilityTextureName"			"diffusal_blade"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -142,8 +142,6 @@
 				"IsDebuff"			"1"
 				"IsPurgable"		"1"
 				
-				"TextureName"		"custom/custom_diffusal_blade"
-				
 				"EffectName"				"particles/items_fx/diffusal_slow.vpcf"
 				"EffectAttachType"			"follow_origin"
 				
@@ -157,8 +155,6 @@
 			{
 				"IsDebuff"		"1"
 				"IsPurgable"	"1"
-				
-				"TextureName"	"custom/custom_diffusal_blade"
 				
 				"EffectName"				"particles/items_fx/diffusal_slow.vpcf"
 				"EffectAttachType"			"follow_origin"
@@ -180,7 +176,8 @@
 				"IsBuff"			"1"
 				"IsPurgable"		"0"
 				
-				"Duration"			"%purge_slow_duration"
+				"EffectName"				"particles/items_fx/diffusal_slow.vpcf"
+				"EffectAttachType"			"follow_origin"
 				
 				"OnCreated"
 				{
