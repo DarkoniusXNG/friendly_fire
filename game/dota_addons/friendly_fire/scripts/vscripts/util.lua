@@ -704,8 +704,10 @@ function CustomCleaveAttack(attacker, target, ability, main_damage, damage_perce
 	
 	-- Main particle
 	if particle_cleave then
-		local cleave_pfx = ParticleManager:CreateParticle(particle_cleave, PATTACH_ABSORIGIN_FOLLOW, attacker)
-		ParticleManager:SetParticleControl(cleave_pfx, 0, target:GetAbsOrigin())
+		local cleave_pfx = ParticleManager:CreateParticle(particle_cleave, PATTACH_WORLDORIGIN, attacker)
+		ParticleManager:SetParticleControl(cleave_pfx, 0, cleave_origin)
+		ParticleManager:SetParticleControlForward(cleave_pfx, 0, direction)
+		--ParticleManager:SetParticleControl(cleave_pfx, 1, Vector(start_radius/2, start_radius/2, start_radius/2))
 		ParticleManager:ReleaseParticleIndex(cleave_pfx)
 	end
 	
@@ -717,15 +719,4 @@ function CustomCleaveAttack(attacker, target, ability, main_damage, damage_perce
 			ParticleManager:ReleaseParticleIndex(cleave_hit_pfx)
 		end
 	end
-	-- local particle
-	-- particle = ParticleManager:CreateParticle(particle_name, PATTACH_ABSORIGIN_FOLLOW, target)
-	-- ParticleManager:SetParticleControl(particle, 1, Vector(radius/2,radius/2,radius/2))
-	-- particle = ParticleManager:CreateParticle(particle_name, PATTACH_ABSORIGIN_FOLLOW, target)
-	-- ParticleManager:SetParticleControl(particle, 1, Vector(radius/2,radius/2,radius/2))
-	-- particle = ParticleManager:CreateParticle(particle_name, PATTACH_ABSORIGIN_FOLLOW, target)
-	-- ParticleManager:SetParticleControl(particle, 1, Vector(radius/2,radius/2,radius/2))
-	-- particle = ParticleManager:CreateParticle(particle_name, PATTACH_ABSORIGIN_FOLLOW, target)
-	-- ParticleManager:SetParticleControl(particle, 1, Vector(radius/2,radius/2,radius/2))
-	-- particle = ParticleManager:CreateParticle(particle_name, PATTACH_ABSORIGIN_FOLLOW, target)
-	-- ParticleManager:SetParticleControl(particle, 1, Vector(radius/2,radius/2,radius/2))
 end
