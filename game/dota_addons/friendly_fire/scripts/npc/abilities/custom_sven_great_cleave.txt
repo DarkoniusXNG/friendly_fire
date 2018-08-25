@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Sven: Great Cleave - custom, works on allies
 	// Author: Darkonius
-	// Notes: OK; 24.8.2018;
+	// Notes: OK; 25.8.2018;
 	// TO_DO: Particle fix
 	//=================================================================================================================
 	"sven_great_cleave_ff"
@@ -20,6 +20,12 @@
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		
 		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_2"
+		
+		"precache"
+		{
+			"particle" 		"particles/units/heroes/hero_sven/sven_spell_great_cleave.vpcf"
+			"particle"		"particles/econ/items/sven/sven_ti7_sword/sven_ti7_sword_spell_great_cleave.vpcf"
+		}
 		
 		// Special
 		//-------------------------------------------------------------------------------------------------------------

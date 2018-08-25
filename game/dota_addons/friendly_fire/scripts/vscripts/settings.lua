@@ -11,10 +11,18 @@ PRE_GAME_TIME = 90.0                    -- How long after loading heroes into th
 POST_GAME_TIME = 60.0                   -- How long should we let people look at the scoreboard before closing the server automatically?
 TREE_REGROW_TIME = 60.0                 -- How long should it take individual trees to respawn after being cut down/destroyed?
 
-GOLD_PER_TICK = 2                     	-- How much gold should players get per tick?
-GOLD_TICK_TIME = 1.0                    -- How long should we wait in seconds between gold ticks?
-NORMAL_START_GOLD = 600					-- Starting Gold if picked normally
-RANDOM_START_GOLD = 800					-- Starting Gold if randomed
+if IsInToolsMode() then
+	PRE_GAME_TIME = 90.0
+	GOLD_PER_TICK = 0
+	GOLD_TICK_TIME = 10.0
+	NORMAL_START_GOLD = 9000
+	RANDOM_START_GOLD = 10000
+else
+	GOLD_PER_TICK = 2                     	-- How much gold should players get per tick?
+	GOLD_TICK_TIME = 1.0                    -- How long should we wait in seconds between gold ticks?
+	NORMAL_START_GOLD = 600					-- Starting Gold if picked normally
+	RANDOM_START_GOLD = 800					-- Starting Gold if randomed
+end
 
 RECOMMENDED_BUILDS_DISABLED = false     -- Should we disable the recommended builds for heroes
 CAMERA_DISTANCE_OVERRIDE = 1134.0       -- How far out should we allow the camera to go?  1134 is the default in Dota
@@ -132,9 +140,3 @@ CUSTOM_TEAM_PLAYER_COUNT = {}	-- If we're not automatically setting the number o
 
 CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_GOODGUYS] = 5
 CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_BADGUYS]  = 5
-
-if IsInToolsMode() then
-	NORMAL_START_GOLD = 9000
-	GOLD_PER_TICK = 0
-	PRE_GAME_TIME = 45.0
-end
