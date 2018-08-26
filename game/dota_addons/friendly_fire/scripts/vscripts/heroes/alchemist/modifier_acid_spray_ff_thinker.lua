@@ -47,7 +47,7 @@ function modifier_acid_spray_ff_thinker:OnCreated(kv)
 		EmitSoundOn("Hero_Alchemist.AcidSpray", dummy)
 		dummy:AddNewModifier(caster, ability, "modifier_kill", {duration = duration})
 
-		-- Stops the sound after the duration; a bit early to ensure the thinker still exists
+		-- Stops the sound after the duration; a bit early to ensure the dummy still exists
 		Timers:CreateTimer(duration-0.1, function() 
 			StopSoundOn("Hero_Alchemist.AcidSpray", dummy)
 		end)

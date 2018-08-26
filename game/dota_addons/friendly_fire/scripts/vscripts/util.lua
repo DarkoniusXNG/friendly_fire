@@ -707,7 +707,6 @@ function CustomCleaveAttack(attacker, target, ability, main_damage, damage_perce
 		local cleave_pfx = ParticleManager:CreateParticle(particle_cleave, PATTACH_WORLDORIGIN, attacker)
 		ParticleManager:SetParticleControl(cleave_pfx, 0, cleave_origin)
 		ParticleManager:SetParticleControlForward(cleave_pfx, 0, direction)
-		--ParticleManager:SetParticleControl(cleave_pfx, 1, Vector(start_radius/2, start_radius/2, start_radius/2))
 		ParticleManager:ReleaseParticleIndex(cleave_pfx)
 	end
 	

@@ -3,8 +3,8 @@
 	//=================================================================================================================
 	// Sven: Great Cleave - custom, works on allies
 	// Author: Darkonius
-	// Notes: OK; 25.8.2018;
-	// TO_DO: Particle fix
+	// Notes: OK; 26.8.2018;
+	// TO_DO:
 	//=================================================================================================================
 	"sven_great_cleave_ff"
 	{
@@ -23,8 +23,7 @@
 		
 		"precache"
 		{
-			"particle" 		"particles/units/heroes/hero_sven/sven_spell_great_cleave.vpcf"
-			"particle"		"particles/econ/items/sven/sven_ti7_sword/sven_ti7_sword_spell_great_cleave.vpcf"
+			"particle"		"particles/sven_ti7_sword_spell_great_cleave.vpcf"
 		}
 		
 		// Special

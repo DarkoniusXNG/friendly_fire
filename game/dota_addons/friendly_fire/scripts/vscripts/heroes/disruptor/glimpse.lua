@@ -67,15 +67,18 @@ function Glimpse(keys)
 	ParticleManager:SetParticleControlEnt(nFXIndex, 0, target, PATTACH_ABSORIGIN_FOLLOW, nil, target:GetOrigin(), true)
 	ParticleManager:SetParticleControl(nFXIndex, 1, past_position)
 	ParticleManager:SetParticleControl(nFXIndex, 2, Vector(duration, duration, duration))
+	ParticleManager:ReleaseParticleIndex(nFXIndex)
 	
 	local nFXIndex2 = ParticleManager:CreateParticle("particles/units/heroes/hero_disruptor/disruptor_glimpse_targetend.vpcf", PATTACH_CUSTOMORIGIN, nil)
 	ParticleManager:SetParticleControlEnt(nFXIndex2, 0, target, PATTACH_ABSORIGIN_FOLLOW, nil, target:GetOrigin(), true)
 	ParticleManager:SetParticleControl(nFXIndex2, 1, past_position)
 	ParticleManager:SetParticleControl(nFXIndex2, 2, Vector(duration, duration, duration))
+	ParticleManager:ReleaseParticleIndex(nFXIndex2)
 	
 	local nFXIndex3 = ParticleManager:CreateParticle("particles/units/heroes/hero_disruptor/disruptor_glimpse_targetstart.vpcf", PATTACH_CUSTOMORIGIN, nil)
 	ParticleManager:SetParticleControlEnt(nFXIndex3, 0, target, PATTACH_ABSORIGIN_FOLLOW, nil, target:GetOrigin(), true)
 	ParticleManager:SetParticleControl(nFXIndex3, 2, Vector(duration, duration, duration))
+	ParticleManager:ReleaseParticleIndex(nFXIndex3)
 	
 	target:EmitSound("Hero_Disruptor.Glimpse.Target")
 	Timers:CreateTimer(duration + FrameTime(), function()
