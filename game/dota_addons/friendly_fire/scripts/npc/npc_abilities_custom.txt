@@ -3,6 +3,8 @@
 
 #base "abilities/custom_alchemist_acid_spray.txt"
 
+#base "abilities/custom_bane_brain_sap.txt"
+
 #base "abilities/custom_chaos_knight_reality_rift.txt"
 
 #base "abilities/custom_disruptor_glimpse.txt"
