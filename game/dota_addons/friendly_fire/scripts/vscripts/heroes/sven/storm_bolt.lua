@@ -9,9 +9,9 @@ function sven_storm_bolt_ff:GetAOERadius()
 	return self:GetSpecialValueFor("bolt_aoe")
 end
 
-function sven_storm_bolt_ff:GetCooldown(nLevel)
+function sven_storm_bolt_ff:GetCooldown(level)
 	local caster = self:GetCaster()
-	local cooldown = self.BaseClass.GetCooldown(self, nLevel)
+	local cooldown = self.BaseClass.GetCooldown(self, level)
 	
 	if IsServer() then
 		-- Talent that reduces cooldown
@@ -33,6 +33,7 @@ function sven_storm_bolt_ff:GetCooldown(nLevel)
 end
 
 function sven_storm_bolt_ff:OnSpellStart()
+	local caster = self:GetCaster()
 	local vision_radius = self:GetSpecialValueFor("vision_radius")
 	local bolt_speed = self:GetSpecialValueFor("bolt_speed")
 
@@ -40,24 +41,24 @@ function sven_storm_bolt_ff:OnSpellStart()
 			EffectName = "particles/units/heroes/hero_sven/sven_spell_storm_bolt.vpcf",
 			Ability = self,
 			iMoveSpeed = bolt_speed,
-			Source = self:GetCaster(),
+			Source = caster,
 			Target = self:GetCursorTarget(),
 			bDodgeable = true,
 			bProvidesVision = true,
-			iVisionTeamNumber = self:GetCaster():GetTeamNumber(),
+			iVisionTeamNumber = caster:GetTeamNumber(),
 			iVisionRadius = vision_radius,
 			iSourceAttachment = DOTA_PROJECTILE_ATTACHMENT_ATTACK_2, 
 		}
 
 	ProjectileManager:CreateTrackingProjectile(info)
-	EmitSoundOn("Hero_Sven.StormBolt", self:GetCaster())
+	EmitSoundOn("Hero_Sven.StormBolt", caster)
 end
 
-function sven_storm_bolt_ff:OnProjectileHit(hTarget, vLocation)
+function sven_storm_bolt_ff:OnProjectileHit(target, location)
 	if IsServer() then
 		local caster = self:GetCaster()
-		if hTarget ~= nil and (not hTarget:IsInvulnerable()) and (not hTarget:TriggerSpellAbsorb(self)) then
-			EmitSoundOn("Hero_Sven.StormBoltImpact", hTarget)
+		if target ~= nil and (not target:IsInvulnerable()) and (not target:TriggerSpellAbsorb(self)) then
+			EmitSoundOn("Hero_Sven.StormBoltImpact", target)
 			local bolt_aoe = self:GetSpecialValueFor("bolt_aoe")
 			local bolt_damage = self:GetSpecialValueFor("bolt_damage")
 			local bolt_stun_duration = self:GetSpecialValueFor("bolt_stun_duration")
@@ -68,11 +69,10 @@ function sven_storm_bolt_ff:OnProjectileHit(hTarget, vLocation)
 				if talent1:GetLevel() ~= 0 then
 					local bonus_duration = talent1:GetSpecialValueFor("value")
 					bolt_stun_duration = bolt_stun_duration + bonus_duration
-					print(bolt_stun_duration)
 				end
 			end
 		
-			local units = FindUnitsInRadius(caster:GetTeamNumber(), hTarget:GetOrigin(), hTarget, bolt_aoe, DOTA_UNIT_TARGET_TEAM_BOTH, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, 0, 0, false)
+			local units = FindUnitsInRadius(caster:GetTeamNumber(), target:GetOrigin(), target, bolt_aoe, self:GetAbilityTargetTeam(), self:GetAbilityTargetType(), 0, 0, false)
 			if #units > 0 then
 				for _,unit in pairs(units) do
 					if unit then
@@ -81,7 +81,8 @@ function sven_storm_bolt_ff:OnProjectileHit(hTarget, vLocation)
 							damage_table.victim = unit
 							damage_table.attacker = caster
 							damage_table.damage = bolt_damage
-							damage_table.damage_type = DAMAGE_TYPE_MAGICAL
+							damage_table.damage_type = self:GetAbilityDamageType()
+							damage_table.ability = self
 							
 							ApplyDamage(damage_table)
 							unit:AddNewModifier(caster, self, "modifier_sven_storm_bolt_ff", {duration = bolt_stun_duration})
