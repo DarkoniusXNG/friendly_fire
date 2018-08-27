@@ -9,5 +9,6 @@ Hero progress:
 * Abaddon - 99% - needs explanations in tooltips
 * Alchemist - 100%
 * Anti-Mage - 99% - needs explanations in tooltips
+* Chaos Knight - 100%
 * Disruptor - 75% - needs reimplemented Static Storm
-* Sven - 99% - needs cleave particle fix
+* Sven - 100%
