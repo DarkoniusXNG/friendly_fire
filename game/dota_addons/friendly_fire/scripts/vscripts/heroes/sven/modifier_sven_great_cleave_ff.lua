@@ -50,7 +50,7 @@ function modifier_sven_great_cleave_ff:OnAttackLanded(event)
 			local start_radius = self.cleave_start_radius
 			local end_radius = self.cleave_end_radius
 			local distance = self.cleave_distance
-			local particle_cleave = "particles/sven_ti7_sword_spell_great_cleave.vpcf"
+			local particle_cleave = "particles/custom/sven_ti7_sword_spell_great_cleave.vpcf"
 			local particle_hit = nil
 			
 			local main_damage

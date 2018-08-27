@@ -1,4 +1,5 @@
 #base "heroes/alchemist.txt"
+#base "heroes/chaos_knight.txt"
 #base "heroes/disruptor.txt"
 #base "heroes/sven.txt"
 

@@ -135,6 +135,11 @@ function friendly_fire_gamemode:OnPlayerLearnedAbility(keys)
 		if talent then
 			hero:AddNewModifier(hero, nil, "modifier_storm_bolt_cd_reduction_talent", {})
 		end
+	elseif ability_name == "special_bonus_unique_chaos_knight_2" then
+		local talent = hero:FindAbilityByName(ability_name)
+		if talent then
+			hero:AddNewModifier(hero, nil, "modifier_reality_rift_armor_reduction_talent", {})
+		end
 	end
 end
 

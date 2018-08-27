@@ -30,7 +30,7 @@
 	
 	//=================================================================================================================
 	// Diffusal Blade - custom, when cast on allies or self it slows and purges of negative buffs.
-	// Notes: OK; 24.8.2018;
+	// Notes: OK; 27.8.2018;
 	//=================================================================================================================
 	"item_diffusal_blade_ff"
 	{
@@ -142,8 +142,10 @@
 				"IsDebuff"			"1"
 				"IsPurgable"		"1"
 				
-				"EffectName"				"particles/items_fx/diffusal_slow.vpcf"
-				"EffectAttachType"			"follow_origin"
+				"TextureName"		"diffusal_blade"
+				
+				"EffectName"			"particles/items_fx/diffusal_slow.vpcf"
+				"EffectAttachType"		"follow_origin"
 				
 				"Properties"
 				{
@@ -153,11 +155,13 @@
 			
 			"item_modifier_custom_purged_enemy_creep" // needs tooltip
 			{
-				"IsDebuff"		"1"
-				"IsPurgable"	"1"
+				"IsDebuff"			"1"
+				"IsPurgable"		"1"
 				
-				"EffectName"				"particles/items_fx/diffusal_slow.vpcf"
-				"EffectAttachType"			"follow_origin"
+				"TextureName"		"diffusal_blade"
+				
+				"EffectName"			"particles/items_fx/diffusal_slow.vpcf"
+				"EffectAttachType"		"follow_origin"
 				
 				"Properties"
 				{
@@ -170,14 +174,16 @@
 				}
 			}
 			
-			"item_modifier_custom_purged_ally" // doesn't need tooltip
+			"item_modifier_custom_purged_ally" // needs tooltip
 			{
-				"IsHidden"			"1"
+				"IsHidden"			"0"
 				"IsBuff"			"1"
 				"IsPurgable"		"0"
 				
-				"EffectName"				"particles/items_fx/diffusal_slow.vpcf"
-				"EffectAttachType"			"follow_origin"
+				"TextureName"		"diffusal_blade"
+				
+				"EffectName"			"particles/items_fx/diffusal_slow.vpcf"
+				"EffectAttachType"		"follow_origin"
 				
 				"OnCreated"
 				{
@@ -197,10 +203,10 @@
 			
 			"modifier_item_custom_diffusal_blade_mana_break" // doesn't need tooltip
 			{
-				"Passive"					"1"
-				"IsHidden"					"1"
-				"IsBuff"					"1"
-				"IsPurgable"				"0"
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"IsBuff"			"1"
+				"IsPurgable"		"0"
 		
 				"OnAttackLanded"
 				{
