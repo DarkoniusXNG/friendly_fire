@@ -12,7 +12,7 @@ POST_GAME_TIME = 60.0                   -- How long should we let people look at
 TREE_REGROW_TIME = 60.0                 -- How long should it take individual trees to respawn after being cut down/destroyed?
 
 if IsInToolsMode() then
-	PRE_GAME_TIME = 90.0
+	PRE_GAME_TIME = 40.0
 	GOLD_PER_TICK = 0
 	GOLD_TICK_TIME = 10.0
 	NORMAL_START_GOLD = 9000

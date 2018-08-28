@@ -115,7 +115,10 @@ function friendly_fire_gamemode:OnHeroInGame(hero)
 				
 				-- Set the starting gold for the player's hero
 				if PlayerResource:HasRandomed(playerID) then
-					PlayerResource:ModifyGold(playerID, RANDOM_START_GOLD-NORMAL_START_GOLD, false, 0)
+					PlayerResource:ModifyGold(playerID, RANDOM_START_GOLD-600, false, 0)
+				else
+					-- If the NORMAL_START_GOLD is smaller then 600, don't use this line of code
+					PlayerResource:ModifyGold(playerID, NORMAL_START_GOLD-600, false, 0)
 				end
 				
 				-- This ensures that this will not happen again if some other hero spawns for the first time during the game
