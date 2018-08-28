@@ -1,9 +1,12 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Dummy stuff
+	// Dummy stuff - passive ability for the dummy unit - taking no damage, hidden, invulnerable, cannot be controlled etc.
+	// Author: Darkonius
+	// Notes: OK; 28.8.2018;
+	// TO_DO:
 	//=================================================================================================================
-  	"dummy_unit"
+	"dummy_unit"
 	{
 		"AbilityBehavior"     			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"           			"ability_datadriven"

@@ -30,8 +30,10 @@
 #base "abilities/disruptor_thunder_strike.txt"
 #base "abilities/doom_bringer_doom.txt"
 #base "abilities/dragon_knight_dragon_tail.txt"
+#base "abilities/drow_ranger_frost_arrows.txt"				// works only if autocast
 //#base "abilities/earth_spirit_geomagnetic_grip.txt"
 #base "abilities/enchantress_enchant.txt"
+#base "abilities/enchantress_impetus.txt"					// works only if autocast
 #base "abilities/enigma_malefice.txt"
 #base "abilities/gyrocopter_homing_missile.txt"
 #base "abilities/huskar_inner_vitality.txt"
@@ -62,8 +64,6 @@
 #base "abilities/ogre_magi_bloodlust.txt"
 #base "abilities/ogre_magi_fireblast.txt"
 #base "abilities/ogre_magi_ignite.txt"
-//#base "abilities/omniknight_purification.txt"
-//#base "abilities/omniknight_repel.txt"
 #base "abilities/oracle_false_promise.txt"
 #base "abilities/phantom_assassin_stifling_dagger.txt"
 #base "abilities/phantom_lancer_spirit_lance.txt"
