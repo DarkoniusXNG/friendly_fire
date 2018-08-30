@@ -15,7 +15,7 @@ function friendly_fire_gamemode:OnGameRulesStateChange(keys)
 	if new_state == DOTA_GAMERULES_STATE_INIT then
 	
 	elseif new_state == DOTA_GAMERULES_STATE_WAIT_FOR_PLAYERS_TO_LOAD then
-		self.bSeenWaitForPlayers = true
+	
 	elseif new_state == DOTA_GAMERULES_STATE_CUSTOM_GAME_SETUP then
 		GameRules:SetCustomGameSetupAutoLaunchDelay(CUSTOM_GAME_SETUP_TIME)
 	elseif new_state == DOTA_GAMERULES_STATE_HERO_SELECTION then
@@ -167,20 +167,12 @@ function friendly_fire_gamemode:OnPlayerLevelUp(keys)
 		-- Update Minimum hero gold bounty on level up
 		local gold_bounty
 		if hero_streak > 1 then
-			gold_bounty = HERO_KILL_GOLD_BASE + hero_level * HERO_KILL_GOLD_PER_LEVEL + hero_streak*60
+			gold_bounty = HERO_KILL_GOLD_BASE + hero_level*HERO_KILL_GOLD_PER_LEVEL + hero_streak*60
 		else
-			gold_bounty = HERO_KILL_GOLD_BASE + hero_level * HERO_KILL_GOLD_PER_LEVEL
+			gold_bounty = HERO_KILL_GOLD_BASE + hero_level*HERO_KILL_GOLD_PER_LEVEL
 		end
 
 		hero:SetMinimumGoldBounty(gold_bounty)
-		
-		-- local levels_without_ability_point = {17, 19, 21, 22, 23}	-- on this levels you should get a skill point
-		-- for i = 1, #levels_without_ability_point do
-			-- if level == levels_without_ability_point[i] then
-				-- local unspent_ability_points = hero:GetAbilityPoints()
-				-- hero:SetAbilityPoints(unspent_ability_points+1)
-			-- end
-		-- end
 	else
 		-- When hero.original isn't nil, hero is a custom clone and he gets a level, remove skill points
 		hero:SetAbilityPoints(0)
@@ -287,9 +279,9 @@ function friendly_fire_gamemode:OnEntityKilled(keys)
 		-- Adjust Minimum Gold bounty
 		local gold_bounty
 		if hero_streak > 1 then
-			gold_bounty = HERO_KILL_GOLD_BASE + hero_level * HERO_KILL_GOLD_PER_LEVEL + hero_streak*60
+			gold_bounty = HERO_KILL_GOLD_BASE + hero_level*HERO_KILL_GOLD_PER_LEVEL + hero_streak*60
 		else
-			gold_bounty = HERO_KILL_GOLD_BASE + hero_level * HERO_KILL_GOLD_PER_LEVEL
+			gold_bounty = HERO_KILL_GOLD_BASE + hero_level*HERO_KILL_GOLD_PER_LEVEL
 		end
 		killed_unit:SetMinimumGoldBounty(gold_bounty)
 		

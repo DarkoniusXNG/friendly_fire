@@ -1,23 +1,14 @@
--- This library allow for easily delayed/timed actions
+-- Timers library allow for easily delayed/timed actions
 require('libraries/timers')
--- This library can be used for advanced physics/motion/collision of units.  See PhysicsReadme.txt for more information.
---require('libraries/physics')
--- This library can be used for advanced 3D projectile systems.
---require('libraries/projectiles')
--- This library can be used for starting customized animations on units from lua
---require('libraries/animations')
--- This library can be used for performing "Frankenstein" attachments on units
---require('libraries/attachments')
--- This library can be used for sending panorama notifications to the UIs of players/teams/everyone
+-- Notifications library can be used for sending panorama notifications to the UIs of players/teams/everyone
 require('libraries/notifications')
--- This library (by Noya) provides player selection inspection and management from server lua
+-- Selection library provides player selection inspection and management from server lua
 require('libraries/selection')
 
 -- settings.lua is where you can specify many different properties for your game mode and is one of the core barebones files.
 require('settings')
 -- events.lua is where you can specify the actions to be taken when any event occurs and is one of the core barebones files.
 require('events')
-
 
 --[[
   This function should be used to set up Async precache calls at the beginning of the gameplay.
@@ -58,7 +49,7 @@ function friendly_fire_gamemode:OnAllPlayersLoaded()
 	-- Iterate through each one
 	for _, building in pairs(buildings) do
 		local building_name = building:GetName()
-		-- Check if its a fountain
+		-- Check if its a fountain or tower
 		if string.find(building_name, "fountain") then
 			-- Add abilities to fountains
 			building:AddAbility("custom_building_true_strike")
@@ -67,9 +58,7 @@ function friendly_fire_gamemode:OnAllPlayersLoaded()
 			building:AddAbility("custom_fountain_true_sight")
 			local fountain_true_sight = building:FindAbilityByName("custom_fountain_true_sight")
 			fountain_true_sight:SetLevel(1)
-		end
-		-- Check if its a tower
-		if string.find(building_name, "tower") then
+		elseif string.find(building_name, "tower") then
 			-- Add abilities to towers
 			building:AddAbility("custom_building_true_strike")
 			local towers_true_strike = building:FindAbilityByName("custom_building_true_strike")
@@ -107,7 +96,7 @@ function friendly_fire_gamemode:OnHeroInGame(hero)
 				-- This is happening only when players create new heroes with custom hero-create spells:
 				-- Custom Illusion spells
 			else
-				-- This is happening for players when their first hero spawn for the first time
+				-- This is happening for players when their primary hero spawns for the first time
 				
 				-- Make heroes briefly visible on spawn (to prevent bad fog interactions)
 				hero:MakeVisibleToTeam(DOTA_TEAM_GOODGUYS, 0.5)
@@ -154,18 +143,16 @@ function friendly_fire_gamemode:InitGameMode()
 	GameRules:SetUseCustomHeroXPValues(USE_CUSTOM_XP_VALUES)
 	GameRules:SetGoldPerTick(GOLD_PER_TICK)
 	GameRules:SetGoldTickTime(GOLD_TICK_TIME)
-	--GameRules:SetRuneSpawnTime(RUNE_SPAWN_TIME)
 	GameRules:SetUseBaseGoldBountyOnHeroes(USE_STANDARD_HERO_GOLD_BOUNTY)
 	GameRules:SetHeroMinimapIconScale(MINIMAP_ICON_SIZE)
 	GameRules:SetCreepMinimapIconScale(MINIMAP_CREEP_ICON_SIZE)
-	GameRules:SetRuneMinimapIconScale(MINIMAP_RUNE_ICON_SIZE)	
-  
+	GameRules:SetRuneMinimapIconScale(MINIMAP_RUNE_ICON_SIZE)
 	GameRules:SetFirstBloodActive(ENABLE_FIRST_BLOOD)
 	GameRules:SetHideKillMessageHeaders(HIDE_KILL_BANNERS)
 	
 	-- This is multiteam configuration stuff
 	if USE_AUTOMATIC_PLAYERS_PER_TEAM then
-		local num = math.floor(10 / MAX_NUMBER_OF_TEAMS)
+		local num = math.floor(10/MAX_NUMBER_OF_TEAMS)
 		local count = 0
 		for team,number in pairs(TEAM_COLORS) do
 			if count >= MAX_NUMBER_OF_TEAMS then
@@ -225,23 +212,10 @@ function friendly_fire_gamemode:InitGameMode()
 	ListenToGameEvent("dota_player_selected_custom_team", Dynamic_Wrap(friendly_fire_gamemode, 'OnPlayerSelectedCustomTeam'), self)
 	ListenToGameEvent("dota_npc_goal_reached", Dynamic_Wrap(friendly_fire_gamemode, 'OnNPCGoalReached'), self)
 	
-	--ListenToGameEvent("dota_tutorial_shop_toggled", Dynamic_Wrap(friendly_fire_gamemode, 'OnShopToggled'), self)
-	--ListenToGameEvent('player_spawn', Dynamic_Wrap(friendly_fire_gamemode, 'OnPlayerSpawn'), self)
-	--ListenToGameEvent('dota_unit_event', Dynamic_Wrap(friendly_fire_gamemode, 'OnDotaUnitEvent'), self)
-	--ListenToGameEvent('nommed_tree', Dynamic_Wrap(friendly_fire_gamemode, 'OnPlayerAteTree'), self)
-	--ListenToGameEvent('player_completed_game', Dynamic_Wrap(friendly_fire_gamemode, 'OnPlayerCompletedGame'), self)
-	--ListenToGameEvent('dota_match_done', Dynamic_Wrap(friendly_fire_gamemode, 'OnDotaMatchDone'), self)
-	--ListenToGameEvent('dota_combatlog', Dynamic_Wrap(friendly_fire_gamemode, 'OnCombatLogEvent'), self)
-	--ListenToGameEvent('dota_player_killed', Dynamic_Wrap(friendly_fire_gamemode, 'OnPlayerKilled'), self)
-	--ListenToGameEvent('player_team', Dynamic_Wrap(friendly_fire_gamemode, 'OnPlayerTeam'), self)
-
 	-- Change random seed
 	local timeTxt = string.gsub(string.gsub(GetSystemTime(), ':', ''), '0','')
 	math.randomseed(tonumber(timeTxt))
 
-	-- Initialized tables for tracking state
-	self.bSeenWaitForPlayers = false
-	
 	local gamemode = GameRules:GetGameModeEntity()
 	
 	-- Setting the Order filter to start catching events
@@ -250,7 +224,7 @@ function friendly_fire_gamemode:InitGameMode()
 	-- Setting the Damage filter
 	gamemode:SetDamageFilter(Dynamic_Wrap(friendly_fire_gamemode, "DamageFilter"), self)
   
-	-- Lua Modifiers
+	-- Lua Modifiers not tied to ability or unit
 	LinkLuaModifier("modifier_always_deniable", "libraries/modifiers/modifier_always_deniable", LUA_MODIFIER_MOTION_NONE)
 	
 	-- Initialize stuff for Disruptor Glimpse
@@ -300,12 +274,6 @@ function friendly_fire_gamemode:CaptureGameMode()
 		mode:SetMinimumAttackSpeed(MINIMUM_ATTACK_SPEED)
 		mode:SetStashPurchasingDisabled(DISABLE_STASH_PURCHASING)
 
-		--for rune, spawn in pairs(ENABLED_RUNES) do
-			--mode:SetRuneEnabled(rune, spawn)
-		--end
-		
-		--mode:SetPowerRuneSpawnInterval(RUNE_SPAWN_TIME)
-		--mode:SetBountyRuneSpawnInterval(BOUNTY_RUNE_TIME)
 		mode:SetUseDefaultDOTARuneSpawnLogic(true)
 
 		mode:SetUnseenFogOfWarEnabled(USE_UNSEEN_FOG_OF_WAR)
@@ -327,12 +295,8 @@ function friendly_fire_gamemode:OrderFilter(event)
 	
 	if order == DOTA_UNIT_ORDER_HOLD_POSITION or order == DOTA_UNIT_ORDER_STOP then
 		local caster = EntIndexToHScript(units["0"])
-		if caster.original_team ~= nil then
-			if caster.original_team == DOTA_TEAM_GOODGUYS then
-				caster:SetTeam(DOTA_TEAM_GOODGUYS)
-			else
-				caster:SetTeam(DOTA_TEAM_BADGUYS)
-			end
+		if caster.original_team then
+			caster:SetTeam(caster.original_team)
 		end
 	end
 	
@@ -520,7 +484,7 @@ function friendly_fire_gamemode:OrderFilter(event)
 				"item_crimson_guard",
 				"item_blade_mail",
 				"item_hood_of_defiance",
-				--"item_radiance",
+				"item_radiance_ff",
 				"item_butterfly",
 				"item_manta",
 				"item_armlet",
@@ -568,11 +532,7 @@ function friendly_fire_gamemode:OrderFilter(event)
 					end
 				end)
 				Timers:CreateTimer(total_duration, function()
-					if caster.original_team == DOTA_TEAM_GOODGUYS then
-						caster:SetTeam(DOTA_TEAM_GOODGUYS)
-					else
-						caster:SetTeam(DOTA_TEAM_BADGUYS)
-					end
+					caster:SetTeam(caster.original_team)
 				end)
 			end
 		end
