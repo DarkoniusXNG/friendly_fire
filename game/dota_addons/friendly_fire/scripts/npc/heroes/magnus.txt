@@ -1,0 +1,11 @@
+"DOTAHeroes"
+{
+	//=================================================================================================================
+	// HERO: Magnus
+	//=================================================================================================================
+	"npc_dota_hero_magnataur"
+	{
+		//"Ability1"		"magnataur_shockwave_ff"		// replaces magnataur_shockwave
+		"Ability2"		"magnataur_empower_ff"			// replaces magnataur_empower
+	}
+}

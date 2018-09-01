@@ -1,10 +1,51 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Centaur Warrunner: Double Edge
+	// Centaur Warrunner: Double Edge - custom
+	// Author: 
+	// Notes: OK; ..2018;
+	// TO_DO: all
 	//=================================================================================================================
 	"centaur_double_edge_ff"
 	{
+		"ID"							"85515"
+		"BaseClass"						"ability_datadriven" // or ability_lua
+		"ScriptFile"                	"heroes/hero_name/ability_name.lua"
+		"AbilityTextureName"			"centaur_double_edge"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"FightRecapLevel"				"1"
+		"AbilitySound"					"Hero_Centaur.DoubleEdge"
+
+		// Stats		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"5.0"
+		"AbilityCastRange"				"150"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_2"
+
+		//------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
+
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"edge_damage"					"175 250 325 400"
+				"LinkedSpecialBonus"			"special_bonus_unique_centaur_4"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"radius"						"190"
+			}
+		}
 	}
 }

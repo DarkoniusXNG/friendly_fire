@@ -5,6 +5,7 @@
 	//=================================================================================================================
 	"npc_dota_hero_pugna"
 	{
+		"Ability1"		"pugna_nether_blast_ff"	// replaces pugna_nether_blast
 		"Ability3"		"pugna_nether_ward_ff"	// replaces pugna_nether_ward
 	}
 }

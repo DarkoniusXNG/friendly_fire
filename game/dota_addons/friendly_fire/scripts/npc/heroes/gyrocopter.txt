@@ -5,7 +5,7 @@
 	//=================================================================================================================
 	"npc_dota_hero_gyrocopter"
 	{
-		"Ability1"		"gyrocopter_rocket_barrage_ff"	// replaces gyrocopter_rocket_barrage
-		"Ability3"		"gyrocopter_flak_cannon_ff"		// replaces gyrocopter_flak_cannon
+		//"Ability1"		"gyrocopter_rocket_barrage_ff"	// replaces gyrocopter_rocket_barrage
+		//"Ability3"		"gyrocopter_flak_cannon_ff"		// replaces gyrocopter_flak_cannon
 	}
 }

@@ -5,6 +5,6 @@
 	//=================================================================================================================
 	"npc_dota_hero_bloodseeker"
 	{
-		"Ability2"		"bloodseeker_blood_bath_ff"	// replaces bloodseeker_blood_bath (Blood Rite)
+		//"Ability2"		"bloodseeker_blood_bath_ff"	// replaces bloodseeker_blood_bath (Blood Rite)
 	}
 }

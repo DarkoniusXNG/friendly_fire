@@ -1,6 +1,10 @@
 #base "heroes/alchemist.txt"
 #base "heroes/bane.txt"
+#base "heroes/batrider.txt"
+#base "heroes/centaur.txt"
 #base "heroes/chaos_knight.txt"
+#base "heroes/dark_seer.txt"
+#base "heroes/dark_willow.txt"
 #base "heroes/disruptor.txt"
 #base "heroes/sven.txt"
 

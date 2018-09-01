@@ -5,7 +5,15 @@
 
 #base "abilities/custom_bane_brain_sap.txt"
 
+#base "abilities/custom_batrider_firefly.txt"
+
+#base "abilities/custom_centaur_double_edge.txt"
+
 #base "abilities/custom_chaos_knight_reality_rift.txt"
+
+#base "abilities/custom_dark_seer_ion_shell.txt"
+
+#base "abilities/custom_dark_willow_bramble_maze.txt"
 
 #base "abilities/custom_disruptor_glimpse.txt"
 

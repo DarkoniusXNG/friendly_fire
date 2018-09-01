@@ -2,12 +2,12 @@
 {
 	//=================================================================================================================
 	// HERO: Death Prophet
-	// Notes: Carrion Swarm works through filter. Silence and Exorcism need rework.
+	// Notes:
 	//=================================================================================================================
 	"npc_dota_hero_death_prophet"
 	{
-		"Ability1"		"death_prophet_carrion_swarm_ff"	// replaces death_prophet_carrion_swarm
+		//"Ability1"		"death_prophet_carrion_swarm_ff"	// replaces death_prophet_carrion_swarm
 		"Ability2"		"death_prophet_silence_ff"			// replaces death_prophet_silence
-		"Ability6"		"death_prophet_exorcism_ff"			// replaces death_prophet_exorcism
+		//"Ability6"		"death_prophet_exorcism_ff"			// replaces death_prophet_exorcism
 	}
 }

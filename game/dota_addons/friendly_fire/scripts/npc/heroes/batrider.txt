@@ -6,8 +6,8 @@
 	//=================================================================================================================
 	"npc_dota_hero_batrider"
 	{
-		"Ability1"		"batrider_sticky_napalm_ff"	// replaces batrider_sticky_napalm
-		"Ability2"		"batrider_flamebreak_ff"	// replaces batrider_flamebreak
-		"Ability3"		"batrider_firefly_ff"		// replaces batrider_firefly
+		//"Ability1"		"batrider_sticky_napalm_ff"	// replaces batrider_sticky_napalm
+		//"Ability2"		"batrider_flamebreak_ff"	// replaces batrider_flamebreak
+		//"Ability3"		"batrider_firefly_ff"		// replaces batrider_firefly
 	}
 }

@@ -1,0 +1,11 @@
+"DOTAHeroes"
+{
+	//=================================================================================================================
+	// HERO: Sand King
+	//=================================================================================================================
+	"npc_dota_hero_sand_king"
+	{
+		"Ability2"		"sandking_sand_storm_ff"	// replaces sandking_sand_storm
+		"Ability6"		"sandking_epicenter_ff"		// replaces sandking_epicenter
+	}
+}

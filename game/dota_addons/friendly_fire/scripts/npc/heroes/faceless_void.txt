@@ -5,6 +5,6 @@
 	//=================================================================================================================
 	"npc_dota_hero_faceless_void"
 	{
-		"Ability2"		"faceless_void_time_dilation_ff"	// replaces faceless_void_time_dilation
+		//"Ability2"		"faceless_void_time_dilation_ff"	// replaces faceless_void_time_dilation
 	}
 }

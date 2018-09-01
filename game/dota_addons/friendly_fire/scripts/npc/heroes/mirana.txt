@@ -5,6 +5,8 @@
 	//=================================================================================================================
 	"npc_dota_hero_mirana"
 	{
+		//"Ability1"		"mirana_starfall_ff"	// replaces mirana_starfall
 		"Ability2"		"mirana_arrow_ff"	// replaces mirana_arrow
+		//"Ability6"		"mirana_invis_ff"	// replaces mirana_invis
 	}
 }

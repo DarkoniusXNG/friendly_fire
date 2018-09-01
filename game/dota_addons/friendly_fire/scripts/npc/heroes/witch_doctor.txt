@@ -1,0 +1,11 @@
+"DOTAHeroes"
+{
+	//=================================================================================================================
+	// HERO: Witch Doctor
+	//=================================================================================================================
+	"npc_dota_hero_witch_doctor"
+	{
+		//"Ability3"		"witch_doctor_maledict_ff"		// replaces witch_doctor_maledict
+		//"Ability6"		"witch_doctor_death_ward_ff"	// replaces witch_doctor_death_ward
+	}
+}
