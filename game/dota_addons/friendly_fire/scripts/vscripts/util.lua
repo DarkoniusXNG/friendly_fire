@@ -637,7 +637,7 @@ end
 
 -- Custom Cleave function
 -- Required arguments: main_damage, damage_percent, cleave_origin, start_radius, end_radius, distance;
--- If start_radius is 0, it will behave like the old cleave(pre 7.00);
+-- If start_radius is 0, it will behave like the old cleave (pre 7.00);
 function CustomCleaveAttack(attacker, target, ability, main_damage, damage_percent, cleave_origin, start_radius, end_radius, distance, particle_cleave, particle_hit)
 	if attacker == nil then
 		print("Attacker/Cleaver is nil!")
@@ -676,7 +676,6 @@ function CustomCleaveAttack(attacker, target, ability, main_damage, damage_perce
 	
 	if target:GetTeamNumber() == team_number then
 		--print("Cleave works when attacking allies!")
-		-- Add return if you don't want cleave to work when attacking allies
 	end
 	
 	if target:IsTower() or target:IsBarracks() or target:IsBuilding() then

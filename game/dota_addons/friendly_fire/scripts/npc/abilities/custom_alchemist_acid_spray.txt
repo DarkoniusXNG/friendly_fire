@@ -1,9 +1,9 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Alchemist: Acid Spray - custom, works on allies and self, multiple instances of Acid Spray don't stack.
+	// Alchemist: Acid Spray - custom, works on allies and self, the damage of multiple instances of Acid Spray doesn't stack.
 	// Author: 
-	// Notes: OK; 24.8.2018;
+	// Notes: OK; 1.9.2018; armor reduction doesn't stack even in normal dota
 	// TO_DO:
 	//=================================================================================================================
 	"alchemist_acid_spray_ff"
