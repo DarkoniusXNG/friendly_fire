@@ -61,15 +61,11 @@ function modifier_tidebringer_ff:GetModifierPreAttack_BonusDamage(keys)
 		local ability = self:GetAbility()
 		local bonus_damage = ability:GetSpecialValueFor("bonus_damage")
 		
-		if ability:IsCooldownReady() then
-			if ability:GetAutoCastState() == true then
-				return bonus_damage
-			else
-				--if ability:GetCursorTarget() then
-					--return bonus_damage
-				--end
-			end
+		if ability:IsCooldownReady() and ability:GetAutoCastState() == true then
+			return bonus_damage
 		end
+	else
+		return 0
 	end
 end
 
@@ -85,7 +81,9 @@ function modifier_tidebringer_ff:OnAttack(event)
 	if parent:GetCurrentActiveAbility() ~= ability then
 		return
 	end
-	print("manual cast detected")
+	
+	-- Manual cast detected
+	self.manual_cast = true
 end
 
 function modifier_tidebringer_ff:OnAttackLanded(event)
@@ -95,43 +93,55 @@ function modifier_tidebringer_ff:OnAttackLanded(event)
 	
 	if event.attacker == parent and ability:IsCooldownReady() then
 		if ability:GetAutoCastState() == true then
+			-- Attack while tidebringer is off cooldown and while autocast is on
 			self:TidebringerCleave(event)
 		else
-			print("attacking while tidebringer is off cooldown and while autocast is off")
+			-- Attack while tidebringer is off cooldown and while autocast is off
+			if self.manual_cast then
+				self:TidebringerCleave(event)
+			end
 		end
 	end
 end
 
 function modifier_tidebringer_ff:TidebringerCleave(event)
-	local attacker = event.attacker
-	local target = event.target
-	local ability = self:GetAbility()
-	local cleave_origin = attacker:GetAbsOrigin()
-	local start_radius = ability:GetSpecialValueFor("start_radius")
-	local end_radius = ability:GetSpecialValueFor("end_radius")
-	local distance = ability:GetSpecialValueFor("distance")
-	local particle_cleave = "particles/units/heroes/hero_kunkka/kunkka_spell_tidebringer.vpcf"
-	
-	local main_damage
-	local damage_percent
-	
-	if attacker:IsIllusion() then
-		main_damage = 0
-		damage_percent = 0
-	else
-		main_damage = event.damage
-		damage_percent = ability:GetSpecialValueFor("cleave_percent")
+	if IsServer() and event then
+		local attacker = event.attacker or self:GetParent()
+		local target = event.target
+		local ability = self:GetAbility()
+		local cleave_origin = attacker:GetAbsOrigin()
+		local start_radius = ability:GetSpecialValueFor("start_radius")
+		local end_radius = ability:GetSpecialValueFor("end_radius")
+		local distance = ability:GetSpecialValueFor("distance")
+		local particle_cleave = "particles/units/heroes/hero_kunkka/kunkka_spell_tidebringer.vpcf"
+		
+		local main_damage
+		local damage_percent
+		
+		if attacker:IsIllusion() then
+			main_damage = 0
+			damage_percent = 0
+		else
+			main_damage = event.damage
+			damage_percent = ability:GetSpecialValueFor("cleave_percent")
+		end
+		
+		if self.manual_cast then
+			main_damage = main_damage + ability:GetSpecialValueFor("bonus_damage")
+		end
+		
+		if target:IsTower() or target:IsBarracks() or target:IsBuilding() or target:IsOther() then
+			return
+		end
+		
+		CustomCleaveAttack(attacker, target, ability, main_damage, damage_percent, cleave_origin, start_radius, end_radius, distance, particle_cleave, particle_hit)
+		attacker:EmitSound("Hero_Kunkka.Tidebringer.Attack")
+		
+		ability:UseResources(true, false, true)
+		
+		-- Remove weapon glow effect
+		attacker:RemoveModifierByName("modifier_tidebringer_ff_weapon_effect")
+		
+		self.manual_cast = nil
 	end
-	
-	if target:IsTower() or target:IsBarracks() or target:IsBuilding() or target:IsOther() then
-		return
-	end
-	
-	CustomCleaveAttack(attacker, target, ability, main_damage, damage_percent, cleave_origin, start_radius, end_radius, distance, particle_cleave, particle_hit)
-	attacker:EmitSound("Hero_Kunkka.Tidebringer.Attack")
-	
-	ability:UseResources(true, false, true)
-	
-	-- Remove weapon glow effect
-	attacker:RemoveModifierByName("modifier_tidebringer_ff_weapon_effect")
 end

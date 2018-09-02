@@ -61,15 +61,6 @@ function kunkka_tidebringer_ff:GetCastRange(location, target)
 	return self:GetCaster():GetAttackRange()
 end
 
-function kunkka_tidebringer_ff:OnSpellStart()
-	local target = self:GetCursorTarget()
-	local caster = self:GetCaster()
-	if IsServer() then
-		--caster:MoveToTargetToAttack(target)
-		caster:PerformAttack(target, false, bool bProcessProcs, false, true)
-	end
-end
-
 function kunkka_tidebringer_ff:ShouldUseResources()
 	return true
 end

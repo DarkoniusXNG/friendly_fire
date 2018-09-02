@@ -710,6 +710,9 @@ function CustomCleaveAttack(attacker, target, ability, main_damage, damage_perce
 					ParticleManager:SetParticleControlEnt(tidebringer_hit_fx, 0, unit, PATTACH_POINT_FOLLOW, "attach_hitloc", unit:GetAbsOrigin(), true)
 					ParticleManager:SetParticleControlEnt(tidebringer_hit_fx, 1, unit, PATTACH_POINT_FOLLOW, "attach_hitloc", unit:GetAbsOrigin(), true)
 					ParticleManager:SetParticleControlEnt(tidebringer_hit_fx, 2, unit, PATTACH_POINT_FOLLOW, "attach_hitloc", unit:GetAbsOrigin(), true)
+					ParticleManager:SetParticleControlForward(tidebringer_hit_fx, 0, direction)
+					ParticleManager:SetParticleControlForward(tidebringer_hit_fx, 1, direction)
+					ParticleManager:SetParticleControlForward(tidebringer_hit_fx, 2, direction)
 					ParticleManager:ReleaseParticleIndex(tidebringer_hit_fx)
 					unit:EmitSound("Hero_Kunkka.TidebringerDamage")
 				end
