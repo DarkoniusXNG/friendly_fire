@@ -17,6 +17,8 @@
 
 #base "abilities/custom_disruptor_glimpse.txt"
 
+#base "abilities/custom_kunkka_tidebringer.txt"
+
 #base "abilities/custom_sven_storm_bolt.txt"
 #base "abilities/custom_sven_great_cleave.txt"
 

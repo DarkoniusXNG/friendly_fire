@@ -638,7 +638,7 @@ end
 -- Custom Cleave function
 -- Required arguments: main_damage, damage_percent, cleave_origin, start_radius, end_radius, distance;
 -- If start_radius is 0, it will behave like the old cleave (pre 7.00);
-function CustomCleaveAttack(attacker, target, ability, main_damage, damage_percent, cleave_origin, start_radius, end_radius, distance, particle_cleave, particle_hit)
+function CustomCleaveAttack(attacker, target, ability, main_damage, damage_percent, cleave_origin, start_radius, end_radius, distance, particle_cleave)
 	if attacker == nil then
 		print("Attacker/Cleaver is nil!")
 		return nil
@@ -694,27 +694,31 @@ function CustomCleaveAttack(attacker, target, ability, main_damage, damage_perce
 	damage_table.damage = main_damage*damage_percent/100
 	damage_table.damage_flags = bit.bor(DOTA_DAMAGE_FLAG_IGNORES_PHYSICAL_ARMOR, DOTA_DAMAGE_FLAG_NO_SPELL_AMPLIFICATION, DOTA_DAMAGE_FLAG_NO_SPELL_LIFESTEAL)
 	
-	for k, unit in pairs(affected_units) do
-		if unit ~= target then
+	for _, unit in pairs(affected_units) do
+		if unit ~= target and unit ~= attacker then
 			damage_table.victim = unit
 			ApplyDamage(damage_table)
 		end
 	end
 	
-	-- Main particle
+	-- Particles
 	if particle_cleave then
-		local cleave_pfx = ParticleManager:CreateParticle(particle_cleave, PATTACH_WORLDORIGIN, attacker)
-		ParticleManager:SetParticleControl(cleave_pfx, 0, cleave_origin)
-		ParticleManager:SetParticleControlForward(cleave_pfx, 0, direction)
-		ParticleManager:ReleaseParticleIndex(cleave_pfx)
-	end
-	
-	-- Hit particles
-	if particle_hit then
-		for _,unit in pairs(affected_units) do
-			local cleave_hit_pfx = ParticleManager:CreateParticle(particle_hit, PATTACH_ABSORIGIN, unit)
-			ParticleManager:SetParticleControl(cleave_hit_pfx, 0, unit:GetAbsOrigin())
-			ParticleManager:ReleaseParticleIndex(cleave_hit_pfx)
+		if particle_cleave == "particles/units/heroes/hero_kunkka/kunkka_spell_tidebringer.vpcf" then
+			for _, unit in pairs(affected_units) do
+				if unit ~= attacker then
+					local tidebringer_hit_fx = ParticleManager:CreateParticle(particle_cleave, PATTACH_CUSTOMORIGIN, attacker)
+					ParticleManager:SetParticleControlEnt(tidebringer_hit_fx, 0, unit, PATTACH_POINT_FOLLOW, "attach_hitloc", unit:GetAbsOrigin(), true)
+					ParticleManager:SetParticleControlEnt(tidebringer_hit_fx, 1, unit, PATTACH_POINT_FOLLOW, "attach_hitloc", unit:GetAbsOrigin(), true)
+					ParticleManager:SetParticleControlEnt(tidebringer_hit_fx, 2, unit, PATTACH_POINT_FOLLOW, "attach_hitloc", unit:GetAbsOrigin(), true)
+					ParticleManager:ReleaseParticleIndex(tidebringer_hit_fx)
+					unit:EmitSound("Hero_Kunkka.TidebringerDamage")
+				end
+			end
+		else
+			local cleave_pfx = ParticleManager:CreateParticle(particle_cleave, PATTACH_WORLDORIGIN, attacker)
+			ParticleManager:SetParticleControl(cleave_pfx, 0, cleave_origin)
+			ParticleManager:SetParticleControlForward(cleave_pfx, 0, direction)
+			ParticleManager:ReleaseParticleIndex(cleave_pfx)
 		end
 	end
 end

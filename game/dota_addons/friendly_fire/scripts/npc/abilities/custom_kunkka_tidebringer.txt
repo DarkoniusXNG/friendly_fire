@@ -1,10 +1,61 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Kunkka: Tidebringer
+	// Kunkka: Tidebringer - custom, can target/damage allies
+	// Author: Darkonius
+	// Notes: OK; 2.9.2018;
+	// TO_DO: particle fix, manual cast fix
 	//=================================================================================================================
 	"kunkka_tidebringer_ff"
 	{
+		"ID"							"85032"
+		"BaseClass"						"ability_lua"
+		"ScriptFile"                	"heroes/kunkka/tidebringer.lua"
+		"AbilityTextureName"			"kunkka_tidebringer"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_ATTACK"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilitySound"					"Hero_Kunkka.Tidebringer.Attack"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"13.0 10.0 7.0 4.0"
+		"AbilityCastRange"				"150"
+		"AbilityCastPoint"				"0.0"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_2"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{		
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"start_radius"			"150"
+			}			
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"end_radius"			"500 550 600 650"
+			}			
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"distance"				"650 800 950 1100"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"			"25 50 75 100"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"cleave_percent"		"100"
+			}
+		}
 	}
 }

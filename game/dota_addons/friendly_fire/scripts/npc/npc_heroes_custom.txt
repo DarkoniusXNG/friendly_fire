@@ -6,6 +6,7 @@
 #base "heroes/dark_seer.txt"
 #base "heroes/dark_willow.txt"
 #base "heroes/disruptor.txt"
+#base "heroes/kunkka.txt"
 #base "heroes/sven.txt"
 
 "DOTAHeroes"

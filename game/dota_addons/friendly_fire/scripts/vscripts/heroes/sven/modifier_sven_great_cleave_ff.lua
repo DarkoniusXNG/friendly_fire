@@ -38,25 +38,24 @@ end
 
 function modifier_sven_great_cleave_ff:OnAttackLanded(event)
 	if IsServer() then
-		local owner = self:GetParent()
-		if owner == event.attacker then
-			if owner:PassivesDisabled() then
+		local parent = self:GetParent()
+		if parent == event.attacker then
+			if parent:PassivesDisabled() then
 				return 0
 			end
 			
 			local target = event.target
 			local ability = self:GetAbility()
-			local cleave_origin = owner:GetAbsOrigin()
+			local cleave_origin = parent:GetAbsOrigin()
 			local start_radius = self.cleave_start_radius
 			local end_radius = self.cleave_end_radius
 			local distance = self.cleave_distance
 			local particle_cleave = "particles/custom/sven_ti7_sword_spell_great_cleave.vpcf"
-			local particle_hit = nil
 			
 			local main_damage
 			local damage_percent
 			
-			if owner:IsIllusion() then
+			if parent:IsIllusion() then
 				main_damage = 0
 				damage_percent = 0
 			else
@@ -64,7 +63,7 @@ function modifier_sven_great_cleave_ff:OnAttackLanded(event)
 				damage_percent = self.cleave_damage_percent
 			end
 			
-			CustomCleaveAttack(owner, target, ability, main_damage, damage_percent, cleave_origin, start_radius, end_radius, distance, particle_cleave, particle_hit)
+			CustomCleaveAttack(parent, target, ability, main_damage, damage_percent, cleave_origin, start_radius, end_radius, distance, particle_cleave)
 			target:EmitSound("Hero_Sven.GreatCleave")
 		end
 	end

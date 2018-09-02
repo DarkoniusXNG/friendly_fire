@@ -5,7 +5,7 @@
 	//=================================================================================================================
 	"npc_dota_hero_kunkka"
 	{
-		"Ability2"		"kunkka_tidebringer_ff"	// replaces kunkka_tidebringer
-		//"Ability6"		"kunkka_ghostship_ff"	// replaces kunkka_ghostship
+		"Ability2"		"kunkka_tidebringer_ff"		// replaces kunkka_tidebringer
+		//"Ability6"		"kunkka_ghostship_ff"		// replaces kunkka_ghostship
 	}
 }

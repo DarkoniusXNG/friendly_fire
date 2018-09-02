@@ -2,11 +2,9 @@ if kunkka_tidebringer_ff == nil then
 	kunkka_tidebringer_ff = class({})
 end
 
-LinkLuaModifier("modifier_tidebringer_ff_autocast", "heroes/kunkka/modifier_tidebringer_ff_autocast.lua", LUA_MODIFIER_MOTION_NONE)
-LinkLuaModifier("modifier_tidebringer_ff_cooldown", "heroes/kunkka/modifier_tidebringer_ff_cooldown.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_tidebringer_ff", "heroes/kunkka/modifier_tidebringer_ff.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_tidebringer_ff_weapon_effect", "heroes/kunkka/modifier_tidebringer_ff_weapon_effect.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_tidebringer_cd_reduction_talent", "heroes/kunkka/modifier_tidebringer_cd_reduction_talent.lua", LUA_MODIFIER_MOTION_NONE)
-
 
 function kunkka_tidebringer_ff:GetCooldown(level)
 	local caster = self:GetCaster()
@@ -36,7 +34,40 @@ function kunkka_tidebringer_ff:IsStealable()
 end
 
 function kunkka_tidebringer_ff:GetIntrinsicModifierName()
-	return "modifier_kunkka_tidebringer_ff_autocast"
+	return "modifier_tidebringer_ff"
+end
+
+function kunkka_tidebringer_ff:CastFilterResultTarget(target)
+	local caster = self:GetCaster()
+	if target == caster then
+		return UF_FAIL_CUSTOM
+	end
+	if IsServer() then
+		local allowed = UnitFilter(target, self:GetAbilityTargetTeam(), self:GetAbilityTargetType(), self:GetAbilityTargetFlags(), caster:GetTeamNumber())
+		return allowed
+	end
+
+	return UF_SUCCESS
+end
+
+function kunkka_tidebringer_ff:GetCustomCastErrorTarget(target)
+	local caster = self:GetCaster()
+	if target == caster then
+		return "#dota_hud_error_cant_cast_on_self"
+	end
+end
+
+function kunkka_tidebringer_ff:GetCastRange(location, target)
+	return self:GetCaster():GetAttackRange()
+end
+
+function kunkka_tidebringer_ff:OnSpellStart()
+	local target = self:GetCursorTarget()
+	local caster = self:GetCaster()
+	if IsServer() then
+		--caster:MoveToTargetToAttack(target)
+		caster:PerformAttack(target, false, bool bProcessProcs, false, true)
+	end
 end
 
 function kunkka_tidebringer_ff:ShouldUseResources()
