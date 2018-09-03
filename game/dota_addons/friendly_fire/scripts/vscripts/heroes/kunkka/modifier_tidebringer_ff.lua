@@ -91,7 +91,7 @@ function modifier_tidebringer_ff:OnAttackLanded(event)
 	local ability = self:GetAbility()
 	local target = event.target
 	
-	if event.attacker == parent and ability:IsCooldownReady() then
+	if event.attacker == parent and ability:IsCooldownReady() and (not parent:IsSilenced()) then
 		if ability:GetAutoCastState() == true then
 			-- Attack while tidebringer is off cooldown and while autocast is on
 			self:TidebringerCleave(event)

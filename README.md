@@ -7,7 +7,7 @@ Dota 2 where every ability has an interaction with allies and enemies. If the ab
 List of abilities that don't work on allies:
 * Abaddon Curse of Avernus (doesn't slow them)
 * Alchemist Greevil's Greed (you don't gain gold when denying)
-* Ancient Apparition Ice Blast
+* Ancient Apparition Ice Blast (it works only when you are near them upon launch)
 * Anti-Mage Mana Break
 * Bristleback AoE Nasal Goo (with Aghanim Scepter)
 * Doom Infernal Blade
@@ -24,11 +24,11 @@ List of abilities that don't work on enemies:
 
 Hero progress:
 
-* Abaddon - 99% - needs explanations in tooltips
+* Abaddon - 100%
 * Alchemist - 100%
-* Ancient Apparition - 99% - needs explanations in tooltips
-* Anti-Mage - 99% - needs explanations in tooltips
-* Arc Warden - 99% - needs explanations in tooltips
+* Ancient Apparition - 75% - needs reimplemented Ice Vortex
+* Anti-Mage - 100%
+* Arc Warden - 100%
 * Axe - 75% - needs reimplemented Counter Helix
 * Bane - 100%
 * Batrider - 75% - needs reimplemented Firefly
@@ -53,20 +53,22 @@ Hero progress:
 * Dragon Knight -
 * Drow Ranger - 100%
 * Earth Spirit -
-...
+* ...
 * Invoker - disabled
-...
+* ...
+* Kunkka - 75% - needs reimplemented Ghost Ship
+* ...
 * Meepo - disabled
-...
+* ...
 * Pudge -
-...
+* ...
 * Rubick - 100%
-...
+* ...
 * Sniper - 100%
-...
+* ...
 * Sven - 100%
 * Techies - disabled
-...
+* ...
 * Tinker - disabled
-...
-* Zeus -
+* ...
+* Zeus - 75% - needs tooltips

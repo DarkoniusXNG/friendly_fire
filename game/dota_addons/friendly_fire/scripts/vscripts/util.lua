@@ -621,12 +621,12 @@ function FindUnitsinTrapezoid(team_number, direction, start_position, cache_unit
 			local unit_location = unit:GetAbsOrigin()
 			local vector1p = unit_location - vertex1
 			local vector2p = unit_location - vertex2
-			local vector3p = unit_location - vertex4
-			local vector4p = unit_location - vertex3
+			local vector3p = unit_location - vertex3
+			local vector4p = unit_location - vertex4
 			local cross1 = vector1.x * vector1p.y - vector1.y * vector1p.x
 			local cross2 = vector2.x * vector2p.y - vector2.y * vector2p.x
-			local cross3 = vector3.x * vector3p.y - vector3.y * vector3p.x
-			local cross4 = vector4.x * vector4p.y - vector4.y * vector4p.x
+			local cross3 = vector3.x * vector4p.y - vector3.y * vector4p.x
+			local cross4 = vector4.x * vector3p.y - vector4.y * vector3p.x
 			if (cross1 > 0 and cross2 > 0 and cross3 > 0 and cross4 > 0) or (cross1 < 0 and cross2 < 0 and cross3 < 0 and cross4 < 0) then
 				table.insert(unit_table, unit)
 			end
@@ -707,12 +707,10 @@ function CustomCleaveAttack(attacker, target, ability, main_damage, damage_perce
 			for _, unit in pairs(affected_units) do
 				if unit ~= attacker then
 					local tidebringer_hit_fx = ParticleManager:CreateParticle(particle_cleave, PATTACH_CUSTOMORIGIN, attacker)
-					ParticleManager:SetParticleControlEnt(tidebringer_hit_fx, 0, unit, PATTACH_POINT_FOLLOW, "attach_hitloc", unit:GetAbsOrigin(), true)
-					ParticleManager:SetParticleControlEnt(tidebringer_hit_fx, 1, unit, PATTACH_POINT_FOLLOW, "attach_hitloc", unit:GetAbsOrigin(), true)
-					ParticleManager:SetParticleControlEnt(tidebringer_hit_fx, 2, unit, PATTACH_POINT_FOLLOW, "attach_hitloc", unit:GetAbsOrigin(), true)
-					ParticleManager:SetParticleControlForward(tidebringer_hit_fx, 0, direction)
-					ParticleManager:SetParticleControlForward(tidebringer_hit_fx, 1, direction)
-					ParticleManager:SetParticleControlForward(tidebringer_hit_fx, 2, direction)
+					ParticleManager:SetParticleControlEnt(tidebringer_hit_fx, 0, unit, PATTACH_OVERHEAD_FOLLOW, "attach_hitloc", unit:GetAbsOrigin(), true)
+					ParticleManager:SetParticleControlEnt(tidebringer_hit_fx, 1, unit, PATTACH_OVERHEAD_FOLLOW, "attach_hitloc", unit:GetAbsOrigin(), true)
+					ParticleManager:SetParticleControlEnt(tidebringer_hit_fx, 2, unit, PATTACH_OVERHEAD_FOLLOW, "attach_hitloc", unit:GetAbsOrigin(), true)
+					--ParticleManager:SetParticleControlForward(tidebringer_hit_fx, 0, direction)
 					ParticleManager:ReleaseParticleIndex(tidebringer_hit_fx)
 					unit:EmitSound("Hero_Kunkka.TidebringerDamage")
 				end
