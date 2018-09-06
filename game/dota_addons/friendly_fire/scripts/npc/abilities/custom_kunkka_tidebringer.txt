@@ -3,8 +3,8 @@
 	//=================================================================================================================
 	// Kunkka: Tidebringer - custom, can target/damage allies, Manual cast works only on enemies
 	// Author: Darkonius
-	// Notes: OK; 3.9.2018;
-	// TO_DO: 
+	// Notes: OK; 6.9.2018;
+	// TO_DO: Bonus damage on primary target on manual cast
 	//=================================================================================================================
 	"kunkka_tidebringer_ff"
 	{

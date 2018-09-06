@@ -61,9 +61,11 @@ function modifier_tidebringer_ff:GetModifierPreAttack_BonusDamage(keys)
 		local ability = self:GetAbility()
 		local bonus_damage = ability:GetSpecialValueFor("bonus_damage")
 		
-		if ability:IsCooldownReady() and ability:GetAutoCastState() == true then
+		if ability:IsCooldownReady() and ability:GetAutoCastState() == true and (not parent:IsSilenced()) then
 			return bonus_damage
 		end
+		-- Bonus damage when manually cast is added during OnAttackLanded event in TidebringerCleave function
+		return 0
 	else
 		return 0
 	end
@@ -72,8 +74,7 @@ end
 function modifier_tidebringer_ff:OnAttack(event)
     local parent = self:GetParent()
 	local ability = self:GetAbility()
-	local target = event.target
-
+	
 	if event.attacker ~= parent then
 		return
 	end
@@ -93,10 +94,10 @@ function modifier_tidebringer_ff:OnAttackLanded(event)
 	
 	if event.attacker == parent and ability:IsCooldownReady() and (not parent:IsSilenced()) then
 		if ability:GetAutoCastState() == true then
-			-- Attack while tidebringer is off cooldown and while autocast is on
+			-- The Attack while autocast is on
 			self:TidebringerCleave(event)
 		else
-			-- Attack while tidebringer is off cooldown and while autocast is off
+			-- The Attack while autocast is off
 			if self.manual_cast then
 				self:TidebringerCleave(event)
 			end
@@ -127,7 +128,9 @@ function modifier_tidebringer_ff:TidebringerCleave(event)
 		end
 		
 		if self.manual_cast then
+			-- Add bonus damage if tidebringer is manually cast
 			main_damage = main_damage + ability:GetSpecialValueFor("bonus_damage")
+			-- Primary target is not damaged with this bonus damage --> needs fix
 		end
 		
 		if target:IsTower() or target:IsBarracks() or target:IsBuilding() or target:IsOther() then
