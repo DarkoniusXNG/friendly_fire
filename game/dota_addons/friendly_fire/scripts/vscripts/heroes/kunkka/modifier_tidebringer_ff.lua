@@ -137,7 +137,7 @@ function modifier_tidebringer_ff:TidebringerCleave(event)
 			return
 		end
 		
-		CustomCleaveAttack(attacker, target, ability, main_damage, damage_percent, cleave_origin, start_radius, end_radius, distance, particle_cleave, particle_hit)
+		CustomCleaveAttack(attacker, target, ability, main_damage, damage_percent, cleave_origin, start_radius, end_radius, distance, particle_cleave)
 		attacker:EmitSound("Hero_Kunkka.Tidebringer.Attack")
 		
 		ability:UseResources(true, false, true)
