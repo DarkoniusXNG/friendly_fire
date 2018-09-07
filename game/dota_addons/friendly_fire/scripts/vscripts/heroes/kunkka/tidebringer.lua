@@ -21,8 +21,7 @@ function kunkka_tidebringer_ff:GetCooldown(level)
 		end
 	else
 		if caster:HasModifier("modifier_tidebringer_cd_reduction_talent") then
-			-- I will fix this at another time (without nettables)
-			cooldown = cooldown - 1.5
+			cooldown = cooldown - caster.tidebringer_cd_reduction_talent_value
 		end
 	end
 	

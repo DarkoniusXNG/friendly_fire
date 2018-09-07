@@ -30,8 +30,7 @@ function modifier_chaos_knight_reality_rift_ff:OnCreated()
 		end
 	else
 		if caster:HasModifier("modifier_reality_rift_armor_reduction_talent") then
-			-- I will fix this at another time
-			armor_reduction = armor_reduction - 7
+			armor_reduction = armor_reduction - caster.reality_rift_armor_reduction_talent_value
 		end
 	end
 	

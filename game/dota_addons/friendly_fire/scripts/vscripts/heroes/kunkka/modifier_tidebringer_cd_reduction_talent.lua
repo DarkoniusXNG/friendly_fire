@@ -17,3 +17,12 @@ end
 function modifier_tidebringer_cd_reduction_talent:RemoveOnDeath()
     return false
 end
+
+function modifier_tidebringer_cd_reduction_talent:OnCreated()
+	if IsClient() then
+		local parent = self:GetParent()
+		local talent = self:GetAbility()
+		local talent_value = talent:GetSpecialValueFor("value")
+		parent.tidebringer_cd_reduction_talent_value = talent_value
+	end
+end
