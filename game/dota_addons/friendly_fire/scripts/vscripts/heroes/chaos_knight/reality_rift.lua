@@ -56,7 +56,7 @@ function chaos_knight_reality_rift_ff:OnAbilityPhaseStart()
 	self.end_position = caster_location + direction*distance*RandomFloat(min_range, max_range)
 	
 	-- Sound and cast animation on the caster
-	EmitSoundOn("Hero_ChaosKnight.RealityRift", caster)
+	caster:EmitSound("Hero_ChaosKnight.RealityRift")
 	caster:StartGesture(ACT_DOTA_OVERRIDE_ABILITY_2)
 	
 	self.FX = {}
@@ -111,7 +111,7 @@ function chaos_knight_reality_rift_ff:OnSpellStart()
 		if target ~= nil and (not target:TriggerSpellAbsorb(self)) then
 			
 			-- Sound on the target
-			EmitSoundOn("Hero_ChaosKnight.RealityRift.Target", target)
+			target:EmitSound("Hero_ChaosKnight.RealityRift.Target")
 			
 			-- Teleport
 			FindClearSpaceForUnit(caster, self.end_position, true)

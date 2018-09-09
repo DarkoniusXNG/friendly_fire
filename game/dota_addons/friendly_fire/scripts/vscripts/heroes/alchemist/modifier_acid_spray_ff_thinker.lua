@@ -44,7 +44,9 @@ function modifier_acid_spray_ff_thinker:OnCreated(kv)
 		local location = ability:GetCursorPosition()
 		
 		local dummy = CreateUnitByName("npc_dota_custom_dummy_unit", location, true, caster, caster, caster:GetTeamNumber())
-		EmitSoundOn("Hero_Alchemist.AcidSpray", dummy)
+		
+		-- Sound on dummy (thinker) that represents Acid Spray itself
+		dummy:EmitSound("Hero_Alchemist.AcidSpray")
 		dummy:AddNewModifier(caster, ability, "modifier_kill", {duration = duration})
 
 		-- Stops the sound after the duration; a bit early to ensure the dummy still exists

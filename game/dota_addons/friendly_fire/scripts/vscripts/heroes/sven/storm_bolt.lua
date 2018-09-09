@@ -50,14 +50,19 @@ function sven_storm_bolt_ff:OnSpellStart()
 		}
 
 	ProjectileManager:CreateTrackingProjectile(info)
-	EmitSoundOn("Hero_Sven.StormBolt", caster)
+	
+	-- Sound on caster
+	caster:EmitSound("Hero_Sven.StormBolt")
 end
 
 function sven_storm_bolt_ff:OnProjectileHit(target, location)
 	if IsServer() then
 		local caster = self:GetCaster()
-		if target ~= nil and (not target:IsInvulnerable()) and (not target:TriggerSpellAbsorb(self)) then
-			EmitSoundOn("Hero_Sven.StormBoltImpact", target)
+		if target and (not target:IsInvulnerable()) and (not target:TriggerSpellAbsorb(self)) then
+			
+			-- Sound on target
+			target:EmitSound("Hero_Sven.StormBoltImpact")
+			
 			local bolt_aoe = self:GetSpecialValueFor("bolt_aoe")
 			local bolt_damage = self:GetSpecialValueFor("bolt_damage")
 			local bolt_stun_duration = self:GetSpecialValueFor("bolt_stun_duration")

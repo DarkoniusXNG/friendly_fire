@@ -41,12 +41,12 @@ function bane_brain_sap_ff:OnSpellStart()
 		end
 		
 		-- Sound on caster
-		EmitSoundOn("Hero_Bane.BrainSap", caster)
+		caster:EmitSound("Hero_Bane.BrainSap")
 		
 		if not target:TriggerSpellAbsorb(self) then
 			
 			-- Sound on target
-			EmitSoundOn("Hero_Bane.BrainSap.Target", target)
+			target:EmitSound("Hero_Bane.BrainSap.Target")
 			
 			-- Particle
 			local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_bane/bane_sap.vpcf", PATTACH_CUSTOMORIGIN, target)
