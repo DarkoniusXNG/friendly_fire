@@ -95,7 +95,8 @@ function chaos_knight_reality_rift_ff:OnAbilityPhaseInterrupted()
 			illusion:RemoveGesture(ACT_DOTA_OVERRIDE_ABILITY_2)
 		end
 	end
-	StopSoundOn("Hero_ChaosKnight.RealityRift", caster) -- Sound doesn't stop in normal dota
+	
+	caster:StopSound("Hero_ChaosKnight.RealityRift")	-- Sound doesn't stop in normal dota
 end
 
 function chaos_knight_reality_rift_ff:OnSpellStart()

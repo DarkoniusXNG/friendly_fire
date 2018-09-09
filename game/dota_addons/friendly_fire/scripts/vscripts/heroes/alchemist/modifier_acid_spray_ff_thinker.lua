@@ -51,7 +51,7 @@ function modifier_acid_spray_ff_thinker:OnCreated(kv)
 
 		-- Stops the sound after the duration; a bit early to ensure the dummy still exists
 		Timers:CreateTimer(duration-0.1, function() 
-			StopSoundOn("Hero_Alchemist.AcidSpray", dummy)
+			dummy:StopSound("Hero_Alchemist.AcidSpray")
 		end)
 		
 		self.particle = ParticleManager:CreateParticle("particles/units/heroes/hero_alchemist/alchemist_acid_spray.vpcf", PATTACH_CUSTOMORIGIN, caster)
