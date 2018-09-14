@@ -1,0 +1,63 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Furion: Wrath of Nature - custom, affects allies, double max targets value
+	// Author: Darkonius
+	// Notes: OK; 14.9.2018;
+	// TO_DO:
+	//=================================================================================================================
+	"furion_wrath_of_nature_ff"
+	{
+		"ID"                            "85248"
+		"BaseClass"                     "ability_lua"
+		"ScriptFile"                    "heroes/natures_prophet/wrath_of_nature.lua"
+		"AbilityTextureName"            "furion_wrath_of_nature"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityType"                   "DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetFlags"        "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		"SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityUnitDamageType"         "DAMAGE_TYPE_MAGICAL"
+		"FightRecapLevel"               "2"
+		"HasScepterUpgrade"             "1"
+		
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"              "0"
+		"AbilityCastPoint"              "0.5"
+		"AbilityCooldown"               "60"
+		"AbilityManaCost"               "175 225 275"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"                  "FIELD_INTEGER"
+				"max_targets"               "32"
+			}
+			"02"
+			{
+				"var_type"                  "FIELD_INTEGER"
+				"damage"                    "110 140 170"
+			}
+			"03"
+			{
+				"var_type"                  "FIELD_INTEGER"
+				"damage_percent_add"        "11"
+			}
+			"04"
+			{
+				"var_type"                  "FIELD_FLOAT"
+				"jump_delay"                "0.25"
+			}
+			"05"
+			{
+				"var_type"                  "FIELD_INTEGER"
+				"damage_scepter"            "135 170 205"
+			}
+		}
+	}
+}

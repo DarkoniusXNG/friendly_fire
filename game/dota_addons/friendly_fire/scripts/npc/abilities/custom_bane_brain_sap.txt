@@ -44,7 +44,7 @@
 				"damage_and_heal"				"75 150 225 300"
 				"LinkedSpecialBonus"			"special_bonus_unique_bane_2"
 			}
-			"03"
+			"02"
 			{
 				"var_type"						"FIELD_FLOAT"
 				"cooldown_scepter"				"1.5"
