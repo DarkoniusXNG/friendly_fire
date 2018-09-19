@@ -38,7 +38,7 @@ BUYBACK_ENABLED = true                 	-- Should we allow people to buyback whe
 
 DISABLE_FOG_OF_WAR_ENTIRELY = false     -- Should we disable fog of war entirely for both teams?
 USE_UNSEEN_FOG_OF_WAR = false           -- Should we make unseen and fogged areas of the map completely black until uncovered by each team? 
-                                            -- Note: DISABLE_FOG_OF_WAR_ENTIRELY must be false for USE_UNSEEN_FOG_OF_WAR to work
+-- Note: DISABLE_FOG_OF_WAR_ENTIRELY must be false for USE_UNSEEN_FOG_OF_WAR to work
 USE_STANDARD_DOTA_BOT_THINKING = false  -- Should we have bots act like they would in Dota? (This requires 3 lanes, normal items, etc)
 USE_STANDARD_HERO_GOLD_BOUNTY = true    -- Should we give gold for hero kills the same as in Dota, or allow those values to be changed?
 
@@ -54,7 +54,7 @@ REMOVE_ILLUSIONS_ON_DEATH = false       -- Should we remove all illusions if the
 DISABLE_GOLD_SOUNDS = false             -- Should we disable the gold sound when players get gold?
 
 END_GAME_ON_KILLS = false               -- Should the game end after a certain number of kills?
---KILLS_TO_END_GAME_FOR_TEAM = 50       -- How many kills for a team should signify an end of game?
+KILLS_TO_END_GAME_FOR_TEAM = 50       -- How many kills for a team should signify an end of game?
 
 USE_CUSTOM_HERO_LEVELS = true           -- Should we allow heroes to have custom levels?
 MAX_LEVEL = 25                          -- What level should we let heroes get to?
@@ -97,7 +97,7 @@ DISABLE_ANNOUNCER = false               -- Should we disable the announcer from 
 FORCE_PICKED_HERO = nil                 -- What hero should we force all players to spawn as? (e.g. "npc_dota_hero_axe").  Use nil to allow players to pick their own hero.
 
 FIXED_RESPAWN_TIME = -1                 -- What time should we use for a fixed respawn timer?  Use -1 to keep the default dota behavior.
-MAX_RESPAWN_TIME = 90.0					-- Dota Default is 100.0 (there is no limit in normal dota)
+MAX_RESPAWN_TIME = 90.0					-- There is no limit in normal dota.
 
 FOUNTAIN_CONSTANT_MANA_REGEN = -1       -- What should we use for the constant fountain mana regen?  Use -1 to keep the default dota behavior.
 FOUNTAIN_PERCENTAGE_MANA_REGEN = -1    	-- What should we use for the percentage fountain mana regen?  Use -1 to keep the default dota behavior.
@@ -109,14 +109,16 @@ DISABLE_DAY_NIGHT_CYCLE = false         -- Should we disable the day night cycle
 DISABLE_KILLING_SPREE_ANNOUNCER = false -- Shuold we disable the killing spree announcer?
 DISABLE_STICKY_ITEM = false             -- Should we disable the sticky item button in the quick buy area?
 
---ENABLED_RUNES = {}                      -- Which runes should be enabled to spawn in our game mode?
---ENABLED_RUNES[DOTA_RUNE_DOUBLEDAMAGE] = true
---ENABLED_RUNES[DOTA_RUNE_HASTE] = true
---ENABLED_RUNES[DOTA_RUNE_ILLUSION] = true
---ENABLED_RUNES[DOTA_RUNE_INVISIBILITY] = true
---ENABLED_RUNES[DOTA_RUNE_REGENERATION] = true
---ENABLED_RUNES[DOTA_RUNE_BOUNTY] = true
---ENABLED_RUNES[DOTA_RUNE_ARCANE] = true
+USE_DEFAULT_RUNE_SYSTEM = true			-- Use default dota rune spawn timings and the same runes as dota have?
+
+ENABLED_RUNES = {}                      -- Which runes should be enabled to spawn in our game mode?
+ENABLED_RUNES[DOTA_RUNE_DOUBLEDAMAGE] = true
+ENABLED_RUNES[DOTA_RUNE_HASTE] = true
+ENABLED_RUNES[DOTA_RUNE_ILLUSION] = true
+ENABLED_RUNES[DOTA_RUNE_INVISIBILITY] = true
+ENABLED_RUNES[DOTA_RUNE_REGENERATION] = true
+ENABLED_RUNES[DOTA_RUNE_BOUNTY] = true
+ENABLED_RUNES[DOTA_RUNE_ARCANE] = true
 
 MAX_NUMBER_OF_TEAMS = 2                		-- How many potential teams can be in this game mode?
 USE_CUSTOM_TEAM_COLORS = false          	-- Should we use custom team colors?

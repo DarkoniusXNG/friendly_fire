@@ -171,8 +171,8 @@ function friendly_fire_gamemode:OnPlayerLevelUp(keys)
 	if hero.original == nil then
 		-- Update Minimum hero gold bounty on level up
 		local gold_bounty
-		if hero_streak > 1 then
-			gold_bounty = HERO_KILL_GOLD_BASE + hero_level*HERO_KILL_GOLD_PER_LEVEL + hero_streak*60
+		if hero_streak > 2 then
+			gold_bounty = HERO_KILL_GOLD_BASE + hero_level*HERO_KILL_GOLD_PER_LEVEL + (hero_streak-2)*60
 		else
 			gold_bounty = HERO_KILL_GOLD_BASE + hero_level*HERO_KILL_GOLD_PER_LEVEL
 		end
@@ -204,7 +204,7 @@ function friendly_fire_gamemode:OnTreeCut(keys)
 end
 
 -- A rune was activated by a player
-function friendly_fire_gamemode:OnRuneActivated (keys)
+function friendly_fire_gamemode:OnRuneActivated(keys)
 	--PrintTable(keys)
 	
 	local player = PlayerResource:GetPlayer(keys.PlayerID)
@@ -283,8 +283,8 @@ function friendly_fire_gamemode:OnEntityKilled(keys)
 	
 		-- Adjust Minimum Gold bounty
 		local gold_bounty
-		if hero_streak > 1 then
-			gold_bounty = HERO_KILL_GOLD_BASE + hero_level*HERO_KILL_GOLD_PER_LEVEL + hero_streak*60
+		if hero_streak > 2 then
+			gold_bounty = HERO_KILL_GOLD_BASE + hero_level*HERO_KILL_GOLD_PER_LEVEL + (hero_streak-2)*60
 		else
 			gold_bounty = HERO_KILL_GOLD_BASE + hero_level*HERO_KILL_GOLD_PER_LEVEL
 		end

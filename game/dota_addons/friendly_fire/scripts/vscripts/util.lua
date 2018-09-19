@@ -131,9 +131,9 @@ end
 function IsRoshan(unit)
 	if unit:IsAncient() and unit:GetName() == "npc_dota_roshan" then
 		return true
-	else
-		return false
 	end
+
+	return false
 end
 
 -- This function checks if this unit/entity is a fountain or not; returns boolean value;
