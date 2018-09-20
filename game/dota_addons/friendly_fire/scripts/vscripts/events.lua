@@ -130,20 +130,20 @@ function friendly_fire_gamemode:OnPlayerLearnedAbility(keys)
 	local playerID = player:GetPlayerID()
 	local hero = PlayerResource:GetAssignedHero(playerID)
 	
-	if ability_name == "special_bonus_unique_sven" then
-		local talent = hero:FindAbilityByName(ability_name)
-		if talent then
-			hero:AddNewModifier(hero, talent, "modifier_storm_bolt_cd_reduction_talent", {})
-		end
-	elseif ability_name == "special_bonus_unique_chaos_knight_2" then
-		local talent = hero:FindAbilityByName(ability_name)
-		if talent then
-			hero:AddNewModifier(hero, talent, "modifier_reality_rift_armor_reduction_talent", {})
-		end
-	elseif ability_name == "special_bonus_unique_kunkka_5" then
-		local talent = hero:FindAbilityByName(ability_name)
-		if talent then
-			hero:AddNewModifier(hero, talent, "modifier_tidebringer_cd_reduction_talent", {})
+	local talents = {
+		{"special_bonus_unique_sven", "modifier_storm_bolt_cd_reduction_talent"},
+		{"special_bonus_unique_chaos_knight_2", "modifier_reality_rift_armor_reduction_talent"},
+		{"special_bonus_unique_kunkka_5", "modifier_tidebringer_cd_reduction_talent"}
+	}
+	
+	for i = 1, #talents do
+		local talent = talents[i]
+		if ability_name == talent[1] then
+			local talent_ability = hero:FindAbilityByName(ability_name)
+			if talent_ability then
+				local talent_modifier = talent[2]
+				hero:AddNewModifier(hero, talent_ability, talent_modifier, {})
+			end
 		end
 	end
 end
