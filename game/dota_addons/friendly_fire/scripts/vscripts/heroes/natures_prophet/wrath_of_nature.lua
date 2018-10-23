@@ -6,20 +6,22 @@ LinkLuaModifier("modifier_furion_wrath_of_nature_thinker_ff", "heroes/natures_pr
 LinkLuaModifier("modifier_treant_bonus_ff", "heroes/natures_prophet/modifier_treant_bonus_ff", LUA_MODIFIER_MOTION_NONE)
 
 function furion_wrath_of_nature_ff:OnAbilityPhaseStart()
-	local nFXIndex = ParticleManager:CreateParticle("particles/units/heroes/hero_furion/furion_wrath_of_nature_cast.vpcf", PATTACH_ABSORIGIN_FOLLOW, self:GetCaster())
-	ParticleManager:SetParticleControlEnt(nFXIndex, 1, self:GetCaster(), PATTACH_POINT_FOLLOW, "attach_attack1", self:GetCaster():GetOrigin(), false)
+	local caster = self:GetCaster()
+	local nFXIndex = ParticleManager:CreateParticle("particles/units/heroes/hero_furion/furion_wrath_of_nature_cast.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster)
+	ParticleManager:SetParticleControlEnt(nFXIndex, 1, caster, PATTACH_POINT_FOLLOW, "attach_attack1", caster:GetOrigin(), false)
 	ParticleManager:ReleaseParticleIndex(nFXIndex)
 
 	return true
 end
 
 function furion_wrath_of_nature_ff:OnSpellStart()
-	self.hTarget = self:GetCursorTarget()
-	self.vTargetPos = self:GetCursorPosition()
+	local caster = self:GetCaster()
+	self.target = self:GetCursorTarget()
+	self.target_point = self:GetCursorPosition()
 
-	EmitSoundOn("Hero_Furion.WrathOfNature_Cast", self:GetCaster())
+	EmitSoundOn("Hero_Furion.WrathOfNature_Cast", caster)
 
-	CreateModifierThinker( self:GetCaster(), self, "modifier_furion_wrath_of_nature_thinker_ff", {}, self.vTargetPos, self:GetCaster():GetTeamNumber(), false )
+	CreateModifierThinker(caster, self, "modifier_furion_wrath_of_nature_thinker_ff", {}, self.target_point, caster:GetTeamNumber(), false)
 end
 
 function furion_wrath_of_nature_ff:GetAssociatedSecondaryAbilities()
@@ -29,4 +31,3 @@ end
 function furion_wrath_of_nature_ff:ProcsMagicStick()
 	return true
 end
-

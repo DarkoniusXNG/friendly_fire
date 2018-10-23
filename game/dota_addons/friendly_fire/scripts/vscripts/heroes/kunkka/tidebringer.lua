@@ -11,6 +11,7 @@ function kunkka_tidebringer_ff:GetCooldown(level)
 	local cooldown = self.BaseClass.GetCooldown(self, level)
 	
 	if IsServer() then
+		-- Server side
 		-- Talent that reduces cooldown
 		local talent = caster:FindAbilityByName("special_bonus_unique_kunkka_5")
 		if talent then
@@ -20,6 +21,7 @@ function kunkka_tidebringer_ff:GetCooldown(level)
 			end
 		end
 	else
+		-- Client side
 		if caster:HasModifier("modifier_tidebringer_cd_reduction_talent") then
 			cooldown = cooldown - caster.tidebringer_cd_reduction_talent_value
 		end
@@ -38,15 +40,13 @@ end
 
 function kunkka_tidebringer_ff:CastFilterResultTarget(target)
 	local caster = self:GetCaster()
+	local default_result = self.BaseClass.CastFilterResultTarget(self, target)
+
 	if target == caster then
 		return UF_FAIL_CUSTOM
 	end
-	if IsServer() then
-		local allowed = UnitFilter(target, self:GetAbilityTargetTeam(), self:GetAbilityTargetType(), self:GetAbilityTargetFlags(), caster:GetTeamNumber())
-		return allowed
-	end
-
-	return UF_SUCCESS
+	
+	return default_result
 end
 
 function kunkka_tidebringer_ff:GetCustomCastErrorTarget(target)

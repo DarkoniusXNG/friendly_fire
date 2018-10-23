@@ -7,50 +7,50 @@ function modifier_furion_wrath_of_nature_thinker_ff:IsHidden()
 end
 
 function modifier_furion_wrath_of_nature_thinker_ff:OnCreated()
-  self.damage = self:GetAbility():GetSpecialValueFor("damage")
-  self.max_targets = self:GetAbility():GetSpecialValueFor("max_targets")
-  self.damage_percent_add = self:GetAbility():GetSpecialValueFor("damage_percent_add")
-  self.jump_delay = self:GetAbility():GetSpecialValueFor("jump_delay")
-  self.damage_scepter = self:GetAbility():GetSpecialValueFor("damage_scepter")
+	local ability = self:GetAbility()
+	self.damage = ability:GetSpecialValueFor("damage")
+	self.max_targets = ability:GetSpecialValueFor("max_targets")
+	self.damage_percent_add = ability:GetSpecialValueFor("damage_percent_add")
+	self.jump_delay = ability:GetSpecialValueFor("jump_delay")
+	self.damage_scepter = ability:GetSpecialValueFor("damage_scepter")
 
-  if IsServer() then
-    self.hTarget = self:GetAbility().hTarget
-    if self.hTarget ~= nil and self.hTarget:TriggerSpellAbsorb( self ) then
-      self:Destroy()
-      return
-    end
+	if IsServer() then
+		self.target = ability.target
+		if self.target and self.target:TriggerSpellAbsorb(ability) then
+			self:Destroy()
+			return
+		end
 
-    if self.hTarget == nil then
-      local vPos = self:GetParent():GetOrigin()
+		if self.target == nil then
+			local position = self:GetParent():GetOrigin()
 
-      local nFXIndexStart = ParticleManager:CreateParticle( "particles/units/heroes/hero_furion/furion_wrath_of_nature_start.vpcf", PATTACH_CUSTOMORIGIN, nil )
-      ParticleManager:SetParticleControl( nFXIndexStart, 0, self:GetParent():GetOrigin() )
-      ParticleManager:ReleaseParticleIndex( nFXIndexStart )
+			local nFXIndexStart = ParticleManager:CreateParticle("particles/units/heroes/hero_furion/furion_wrath_of_nature_start.vpcf", PATTACH_CUSTOMORIGIN, self:GetCaster())
+			ParticleManager:SetParticleControl(nFXIndexStart, 0, position)
+			ParticleManager:ReleaseParticleIndex(nFXIndexStart)
 
-      self.hTarget = self:GetNextTarget()
-      if self.hTarget == nil then
-        Msg( "Couldn't find target" )
-        self:Destroy()
-        return
-      end
-    end
+			self.target = self:GetNextTarget()
+			if self.target == nil then
+				print("Couldn't find target")
+				self:Destroy()
+				return
+			end
+		end
 
-    self.flLastTickTime = GameRules:GetGameTime()
-    self.flTimeAccumlator = 0.0
-    self.hTargetsHit = {}
-    self:StartIntervalThink( 0.0 )
+		self.flLastTickTime = GameRules:GetGameTime()
+		self.flTimeAccumlator = 0.0
+		self.hTargetsHit = {}
+		self:StartIntervalThink(0.1)
 
-    self:CreateBounceFX( self.hTarget )
-    self:GetParent():SetOrigin( self.hTarget:GetOrigin() )
-    self:HitTarget( self.hTarget )
-
-  end
+		self:CreateBounceFX( self.target )
+		self:GetParent():SetOrigin(self.target:GetOrigin())
+		self:HitTarget(self.target)
+	end
 end
 
 function modifier_furion_wrath_of_nature_thinker_ff:OnDestroy()
-  if IsServer() then
-    UTIL_Remove( self:GetParent() )
-  end
+	if IsServer() then
+		UTIL_Remove( self:GetParent() )
+	end
 end
 
 function modifier_furion_wrath_of_nature_thinker_ff:OnIntervalThink()
@@ -85,35 +85,34 @@ function modifier_furion_wrath_of_nature_thinker_ff:OnIntervalThink()
 end
 
 function modifier_furion_wrath_of_nature_thinker_ff:GetNextTarget()
-  local enemies = FindUnitsInRadius( self:GetCaster():GetTeamNumber(), self:GetParent():GetOrigin(), nil, FIND_UNITS_EVERYWHERE, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_CREEP, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, 0, false )
+  local units = FindUnitsInRadius( self:GetCaster():GetTeamNumber(), self:GetParent():GetOrigin(), nil, FIND_UNITS_EVERYWHERE, DOTA_UNIT_TARGET_TEAM_BOTH, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, 0, false )
 
   local hClosestTarget = nil
   local flClosestDist = 0.0
-  if #enemies > 0 then
-    for _,enemy in pairs(enemies) do
-      if enemy ~= nil and self:GetCaster():CanEntityBeSeenByMyTeam( enemy ) then
+
+    for _, unit in pairs(units) do
+      if unit and self:GetCaster():CanEntityBeSeenByMyTeam(unit) then
         local bHitByWrath = false
 
         if self.hTargetsHit ~= nil then
           for _,hHitEnemy in ipairs(self.hTargetsHit) do
-            if enemy == hHitEnemy then
+            if unit == hHitEnemy then
               bHitByWrath = true
             end
           end
         end
 
         if bHitByWrath == false then
-          local vToTarget = enemy:GetOrigin() - self:GetParent():GetOrigin()
+          local vToTarget = unit:GetOrigin() - self:GetParent():GetOrigin()
           local flDistToTarget = vToTarget:Length()
 
           if hClosestTarget == nil or flDistToTarget < flClosestDist then
-            hClosestTarget = enemy
+            hClosestTarget = unit
             flClosestDist = flDistToTarget
           end
         end
       end
     end
-  end
 
   return hClosestTarget
 end

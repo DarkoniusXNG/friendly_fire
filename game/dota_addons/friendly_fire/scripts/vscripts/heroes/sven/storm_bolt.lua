@@ -15,6 +15,7 @@ function sven_storm_bolt_ff:GetCooldown(level)
 	
 	if IsServer() then
 		-- Talent that reduces cooldown
+		-- Server side
 		local talent = caster:FindAbilityByName("special_bonus_unique_sven")
 		if talent then
 			if talent:GetLevel() ~= 0 then
@@ -23,6 +24,7 @@ function sven_storm_bolt_ff:GetCooldown(level)
 			end
 		end
 	else
+		-- Client side
 		if caster:HasModifier("modifier_storm_bolt_cd_reduction_talent") then
 			cooldown = cooldown - caster.storm_bolt_cd_reduction_talent_value
 		end

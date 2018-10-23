@@ -14,7 +14,7 @@ function modifier_acid_spray_ff_debuff:IsPurgable()
 	return false
 end
 
-function modifier_acid_spray_ff_debuff:OnCreated(kv)
+function modifier_acid_spray_ff_debuff:OnCreated()
 	local ability = self:GetAbility()
 	
 	self.armor_reduction = ability:GetSpecialValueFor("armor_reduction")

@@ -2,22 +2,19 @@ if bane_brain_sap_ff == nil then
 	bane_brain_sap_ff = class({})
 end
 
+-- CastFilterResultTarget runs on client side first
 function bane_brain_sap_ff:CastFilterResultTarget(target)
-	if IsServer() then
-		local caster = self:GetCaster()
-		
-		if target ~= nil and target:IsMagicImmune() then
-				if caster:HasScepter() then
-					return UF_SUCCESS
-				end
-			return UF_FAIL_MAGIC_IMMUNE_ENEMY
-		end
+	local default_result = self.BaseClass.CastFilterResultTarget(self, target)
 
-		local allowed = UnitFilter(target, self:GetAbilityTargetTeam(), self:GetAbilityTargetType(), self:GetAbilityTargetFlags(), caster:GetTeamNumber())
-		return allowed
+	if default_result == UF_FAIL_MAGIC_IMMUNE_ENEMY then
+		local caster = self:GetCaster()
+		-- If caster has Aghanim Scepter
+		if caster:HasScepter() then
+			return UF_SUCCESS
+		end
 	end
 
-	return UF_SUCCESS
+	return default_result
 end
 
 function bane_brain_sap_ff:GetCooldown(nLevel)
