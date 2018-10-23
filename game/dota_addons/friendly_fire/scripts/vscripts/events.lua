@@ -132,6 +132,7 @@ function friendly_fire_gamemode:OnPlayerLearnedAbility(keys)
 	
 	local talents = {
 		{"special_bonus_unique_sven", "modifier_storm_bolt_cd_reduction_talent"},
+		{"special_bonus_unique_chaos_knight", "modifier_reality_rift_talent_1"},
 		{"special_bonus_unique_chaos_knight_2", "modifier_reality_rift_armor_reduction_talent"},
 		{"special_bonus_unique_kunkka_5", "modifier_tidebringer_cd_reduction_talent"}
 	}
