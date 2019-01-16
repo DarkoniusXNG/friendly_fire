@@ -18,7 +18,7 @@ function modifier_tidebringer_ff:RemoveOnDeath()
 	return false
 end
 
-function modifier_tidebringer_ff:OnCreated(kv)
+function modifier_tidebringer_ff:OnCreated()
 	local parent = self:GetParent()
 	local ability = self:GetAbility()
 	-- Add weapon glow effect when the modifier is created
